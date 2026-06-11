@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://72efrcbybqxd"]
 
-[ext_resource type="Script" uid="uid://bje3ipnmlthja" path="res://scenes/enemy-follow.gd" id="1_w7c3h"]
 [ext_resource type="Script" uid="uid://blyoqbubqwgub" path="res://scenes/path_spawner.gd" id="1_w8frs"]
-[ext_resource type="PackedScene" uid="uid://8mscvjin3a74" path="res://scenes/enemies.tscn" id="2_w8frs"]
+[ext_resource type="PackedScene" uid="uid://dpsnfs0wxt8uy" path="res://scenes/pathspawner.tscn" id="3_w8frs"]
 
 [sub_resource type="Curve2D" id="Curve2D_rd3vj"]
 _data = {
@@ -10,10 +9,13 @@ _data = {
 }
 point_count = 7
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c3h"]
+size = Vector2(74.5, 103)
+
 [node name="Node2D" type="Node2D" unique_id=96619386]
 
 [node name="spawner" type="Timer" parent="." unique_id=1426996698]
-wait_time = 10.0
+wait_time = 3.0
 autostart = true
 
 [node name="map" type="Node2D" parent="." unique_id=315439363]
@@ -77,13 +79,16 @@ offset_bottom = 555.0
 curve = SubResource("Curve2D_rd3vj")
 script = ExtResource("1_w8frs")
 timer = NodePath("../spawner")
-enemy = ExtResource("2_w8frs")
+enemy = ExtResource("3_w8frs")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=611561683]
+[node name="PathFollow2D" parent="Path2D" unique_id=1528065059 instance=ExtResource("3_w8frs")]
 position = Vector2(110, 143)
-rotation = 1.5707964
-loop = false
-script = ExtResource("1_w7c3h")
-Speed = 200
 
-[node name="CharacterBody2D" parent="Path2D/PathFollow2D" unique_id=175166536 instance=ExtResource("2_w8frs")]
+[node name="Area2D" type="Area2D" parent="." unique_id=1640597057]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1665157251]
+position = Vector2(1076.75, 523.5)
+shape = SubResource("RectangleShape2D_w7c3h")
+
+[connection signal="timeout" from="spawner" to="Path2D" method="_on_spawner_timeout"]
+[connection signal="area_entered" from="Area2D" to="Path2D" method="_disappear"]
