@@ -3,7 +3,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4yn1"]
 size = Vector2(124.54212, 124.54212)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=175166536]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=175166536 groups=["enemy"]]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=752499259]
 offset_left = -17.0
