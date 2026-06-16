@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://uljl4jcak26m"]
 
-[ext_resource type="Script" uid="uid://bjch7t080ucec" path="res://scenes/unit.gd" id="1_o7ajc"]
+[ext_resource type="Script" uid="uid://bjch7t080ucec" path="res://script/unit.gd" id="1_o7ajc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7ajc"]
-radius = 148.48569
+radius = 128.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7ajc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -20,7 +20,7 @@ corner_radius_bottom_left = 888
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lf63s"]
 size = Vector2(35, 35)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1839986940]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1839986940 groups=["unit"]]
 script = ExtResource("1_o7ajc")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2075252876]
@@ -29,10 +29,10 @@ script = ExtResource("1_o7ajc")
 shape = SubResource("CircleShape2D_o7ajc")
 
 [node name="Panel" type="Panel" parent="Area2D" unique_id=1849185203]
-offset_left = -149.0
-offset_top = -151.0
-offset_right = 150.0
-offset_bottom = 150.85367
+offset_left = -131.0
+offset_top = -133.0
+offset_right = 131.0
+offset_bottom = 133.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_o7ajc")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=957925384]

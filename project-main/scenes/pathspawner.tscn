@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dpsnfs0wxt8uy"]
 
-[ext_resource type="Script" uid="uid://bje3ipnmlthja" path="res://scenes/enemy-follow.gd" id="1_6wbrv"]
+[ext_resource type="Script" uid="uid://bje3ipnmlthja" path="res://script/enemy-follow.gd" id="1_6wbrv"]
 [ext_resource type="PackedScene" uid="uid://8mscvjin3a74" path="res://scenes/enemies.tscn" id="2_xwymq"]
 
 [node name="PathFollow2D" type="PathFollow2D" unique_id=1528065059]

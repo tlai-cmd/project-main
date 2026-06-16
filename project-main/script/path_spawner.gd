@@ -12,6 +12,8 @@ func _process(delta: float) -> void:
 func _on_spawner_timeout() -> void:
 	var enemy_scene = enemy.instantiate()
 	add_child(enemy_scene)
+	
+	
 
 	
 	

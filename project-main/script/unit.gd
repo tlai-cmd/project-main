@@ -21,15 +21,15 @@ func _body_entered(body: Node2D) -> void:
 		look_at(enemy.global_position)
 		closest_enemy = body
 		enemies.append(body)
-		
-		
-#for node in enemies:
-#if node.get_parent().progress_ratio > closest_enemy.get_parent().progress_ratio:
-#closest_enemy == node
+		for node in enemies:
+			if node.get_parent().progress_ratio > closest_enemy.get_parent().progress_ratio:
+				closest_enemy = node
 		
 
 
 func _body_exited(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		enemies.erase(body)
-		closest_enemy = null
+		if body == closest_enemy:
+			closest_enemy = null
+		print(enemies)

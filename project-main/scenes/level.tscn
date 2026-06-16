@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://72efrcbybqxd"]
 
-[ext_resource type="Script" uid="uid://blyoqbubqwgub" path="res://scenes/path_spawner.gd" id="1_w8frs"]
+[ext_resource type="Script" uid="uid://blyoqbubqwgub" path="res://script/path_spawner.gd" id="1_w8frs"]
 [ext_resource type="PackedScene" uid="uid://uljl4jcak26m" path="res://scenes/unit.tscn" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://dpsnfs0wxt8uy" path="res://scenes/pathspawner.tscn" id="3_w8frs"]
 
@@ -16,7 +16,7 @@ size = Vector2(74.5, 103)
 [node name="Node2D" type="Node2D" unique_id=96619386]
 
 [node name="spawner" type="Timer" parent="." unique_id=1426996698]
-wait_time = 0.5
+wait_time = 5.0
 autostart = true
 
 [node name="map" type="Node2D" parent="." unique_id=315439363]
