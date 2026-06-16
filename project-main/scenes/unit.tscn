@@ -37,9 +37,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_o7ajc")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=957925384]
 offset_left = 4.0
-offset_top = -3.0
-offset_right = 24.0
-offset_bottom = 4.0
+offset_top = -5.0
+offset_right = 28.0
+offset_bottom = 5.0
 color = Color(0.6441561, 0.9999997, 0.831178, 1)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1095897847]

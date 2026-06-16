@@ -16,7 +16,7 @@ size = Vector2(74.5, 103)
 [node name="Node2D" type="Node2D" unique_id=96619386]
 
 [node name="spawner" type="Timer" parent="." unique_id=1426996698]
-wait_time = 300.0
+wait_time = 0.5
 autostart = true
 
 [node name="map" type="Node2D" parent="." unique_id=315439363]
