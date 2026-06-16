@@ -15,11 +15,11 @@ func _process(delta: float) -> void:
 
 
 func _body_entered(body: Node2D) -> void:
-	look_at(enemy.global_position)
-	if body == enemy:
+	if body.is_in_group("enemy"):
+		look_at(enemy.global_position)
 		enemies.append(body)
 
 
 func _body_exited(body: Node2D) -> void:
-	if body == enemy:
+	if body.is_in_group("enemy"):
 		enemies.erase(body)

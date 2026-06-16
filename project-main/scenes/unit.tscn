@@ -2,14 +2,38 @@
 
 [ext_resource type="Script" uid="uid://bjch7t080ucec" path="res://scenes/unit.gd" id="1_o7ajc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf63s"]
-size = Vector2(35, 35)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7ajc"]
 radius = 148.48569
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7ajc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(5.968213e-06, 0.91524005, 0.3664691, 1)
+corner_radius_top_left = 888
+corner_radius_top_right = 888
+corner_radius_bottom_right = 888
+corner_radius_bottom_left = 888
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf63s"]
+size = Vector2(35, 35)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1839986940]
 script = ExtResource("1_o7ajc")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2075252876]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=39596314]
+shape = SubResource("CircleShape2D_o7ajc")
+
+[node name="Panel" type="Panel" parent="Area2D" unique_id=1849185203]
+offset_left = -149.0
+offset_top = -151.0
+offset_right = 150.0
+offset_bottom = 150.85367
+theme_override_styles/panel = SubResource("StyleBoxFlat_o7ajc")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=957925384]
 offset_left = 4.0
@@ -28,11 +52,6 @@ color = Color(0.6441561, 0.9999997, 0.831178, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300474670]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_lf63s")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=2075252876]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=39596314]
-shape = SubResource("CircleShape2D_o7ajc")
 
 [connection signal="body_entered" from="Area2D" to="." method="_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_body_exited"]
