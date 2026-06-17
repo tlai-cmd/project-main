@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://hr237byocdv5"]
 
+[ext_resource type="Script" uid="uid://dkjoxuc86isej" path="res://script/bullet.gd" id="1_mkf8s"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1aey"]
 size = Vector2(20, 4)
 
 [node name="Area2D" type="Area2D" unique_id=1384321310]
+script = ExtResource("1_mkf8s")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=107951890]
 offset_left = -10.0
