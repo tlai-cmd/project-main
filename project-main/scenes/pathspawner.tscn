@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://bje3ipnmlthja" path="res://script/enemy-follow.gd" id="1_6wbrv"]
 [ext_resource type="PackedScene" uid="uid://8mscvjin3a74" path="res://scenes/enemies.tscn" id="2_xwymq"]
 
-[node name="PathFollow2D" type="PathFollow2D" unique_id=1528065059]
+[node name="PathFollow2D" type="PathFollow2D" unique_id=1528065059 node_paths=PackedStringArray("enemy")]
 rotation = 1.5707964
 loop = false
 script = ExtResource("1_6wbrv")
 Speed = 200
+enemy = NodePath("CharacterBody2D")
 
 [node name="CharacterBody2D" parent="." unique_id=175166536 instance=ExtResource("2_xwymq")]

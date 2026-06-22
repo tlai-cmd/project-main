@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://uljl4jcak26m"]
 
 [ext_resource type="Script" uid="uid://bjch7t080ucec" path="res://script/unit.gd" id="1_o7ajc"]
+[ext_resource type="PackedScene" uid="uid://hr237byocdv5" path="res://scenes/bullet.tscn" id="2_k673f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7ajc"]
 radius = 128.0
@@ -20,8 +21,12 @@ corner_radius_bottom_left = 888
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lf63s"]
 size = Vector2(35, 35)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1839986940 groups=["unit"]]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1839986940 node_paths=PackedStringArray("bullet_spawn", "timer", "pivot") groups=["unit"]]
 script = ExtResource("1_o7ajc")
+bullet_scene = ExtResource("2_k673f")
+bullet_spawn = NodePath("Node2D/Marker2D")
+timer = NodePath("cooldown")
+pivot = NodePath("Node2D")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2075252876]
 
@@ -35,23 +40,72 @@ offset_right = 131.0
 offset_bottom = 133.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_o7ajc")
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=957925384]
-offset_left = 4.0
-offset_top = -5.0
-offset_right = 28.0
-offset_bottom = 5.0
-color = Color(0.6441561, 0.9999997, 0.831178, 1)
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1095897847]
-offset_left = -18.0
-offset_top = -17.0
-offset_right = 17.0
-offset_bottom = 18.0
-color = Color(0.6441561, 0.9999997, 0.831178, 1)
+[node name="cooldown" type="Timer" parent="." unique_id=1425831481]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300474670]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_lf63s")
 
+[node name="Node2D" type="Node2D" parent="." unique_id=1418575577]
+
+[node name="ColorRect8" type="ColorRect" parent="Node2D" unique_id=1227890744]
+offset_left = -18.0
+offset_top = 5.0
+offset_right = 17.0
+offset_bottom = 18.0
+color = Color(0.6441561, 0.9999997, 0.831178, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Node2D" unique_id=957925384]
+offset_left = -16.0
+offset_top = -5.0
+offset_right = 12.0
+offset_bottom = 5.0
+color = Color(0.6441561, 0.9999997, 0.831178, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Node2D" unique_id=1095897847]
+offset_left = -18.0
+offset_top = -17.0
+offset_right = 17.0
+offset_bottom = -5.0
+color = Color(0.6441561, 0.9999997, 0.831178, 1)
+
+[node name="Marker2D" type="Marker2D" parent="Node2D" unique_id=735585276]
+position = Vector2(28, 0)
+rotation = -1.568428
+
+[node name="ColorRect3" type="ColorRect" parent="Node2D" unique_id=948649444]
+offset_left = -18.0
+offset_top = -17.0
+offset_right = 17.0
+offset_bottom = -15.0
+
+[node name="ColorRect4" type="ColorRect" parent="Node2D" unique_id=387598408]
+offset_left = -18.0
+offset_top = 16.0
+offset_right = 17.0
+offset_bottom = 18.0
+
+[node name="ColorRect5" type="ColorRect" parent="Node2D" unique_id=1426080316]
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 28.0
+offset_bottom = 3.0
+color = Color(3.272891e-06, 0.6444084, 0.44923067, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Node2D" unique_id=1705132468]
+offset_left = -13.0
+offset_top = -9.0
+offset_right = 13.0
+offset_bottom = 4.0
+color = Color(3.272891e-06, 0.6444084, 0.44923067, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="Node2D" unique_id=264864845]
+offset_left = -13.0
+offset_top = 3.0
+offset_right = 13.0
+offset_bottom = 9.0
+color = Color(3.272891e-06, 0.6444084, 0.44923067, 1)
+
 [connection signal="body_entered" from="Area2D" to="." method="_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_body_exited"]
+[connection signal="timeout" from="cooldown" to="." method="_bullet_cooldown"]
