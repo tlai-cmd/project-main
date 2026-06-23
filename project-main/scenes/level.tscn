@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://72efrcbybqxd"]
 
+[ext_resource type="Script" uid="uid://dp577w756gukn" path="res://script/level.gd" id="1_ppgk2"]
 [ext_resource type="Script" uid="uid://blyoqbubqwgub" path="res://script/path_spawner.gd" id="1_w8frs"]
 [ext_resource type="PackedScene" uid="uid://uljl4jcak26m" path="res://scenes/unit.tscn" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://dpsnfs0wxt8uy" path="res://scenes/pathspawner.tscn" id="3_w8frs"]
+[ext_resource type="Texture2D" uid="uid://b72ireijwrjdu" path="res://assets/Screenshot 2026-06-23 142238.png" id="5_2r41h"]
 
 [sub_resource type="Curve2D" id="Curve2D_rd3vj"]
 _data = {
@@ -13,7 +15,22 @@ point_count = 7
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c3h"]
 size = Vector2(74.5, 103)
 
-[node name="Node2D" type="Node2D" unique_id=96619386]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8frs"]
+bg_color = Color(0.019019907, 0.14978868, 0.21852854, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx8sn"]
+bg_color = Color(0.08560049, 0.355139, 0.49225658, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppgk2"]
+bg_color = Color(0.39607844, 0.627451, 0.7921569, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ppgk2"]
+font_size = 34
+
+[node name="Node2D" type="Node2D" unique_id=96619386 node_paths=PackedStringArray("money_label") groups=["level"]]
+script = ExtResource("1_ppgk2")
+unit_scene = ExtResource("3_mx8sn")
+money_label = NodePath("CanvasLayer2/Label")
 
 [node name="spawner" type="Timer" parent="." unique_id=1426996698]
 wait_time = 2.0
@@ -95,4 +112,27 @@ shape = SubResource("RectangleShape2D_w7c3h")
 [node name="CharacterBody2D" parent="." unique_id=1839986940 instance=ExtResource("3_mx8sn")]
 position = Vector2(407, 257)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2010603082]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=834182416]
+offset_left = 1024.0
+offset_top = 16.0
+offset_right = 1122.0
+offset_bottom = 97.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_w8frs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mx8sn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ppgk2")
+icon = ExtResource("5_2r41h")
+icon_alignment = 1
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=845650599]
+
+[node name="Label" type="Label" parent="CanvasLayer2" unique_id=1478148952]
+offset_left = 786.0
+offset_top = 19.0
+offset_right = 981.0
+offset_bottom = 97.0
+label_settings = SubResource("LabelSettings_ppgk2")
+
 [connection signal="timeout" from="spawner" to="Path2D" method="_on_spawner_timeout"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_unit_place_button"]
