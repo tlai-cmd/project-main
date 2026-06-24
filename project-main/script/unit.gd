@@ -4,6 +4,7 @@ var enemies = [ ]
 var closest_enemy: CharacterBody2D
 var shoot_switch: bool = true
 var placing = true
+var level: Node2D
 
 @export var bullet_scene: PackedScene
 @export var bullet_spawn: Marker2D
@@ -13,6 +14,8 @@ var placing = true
 func _ready() -> void:
 	for i in get_tree().get_nodes_in_group("enemy"):
 		enemy = i
+	for node in get_tree().get_nodes_in_group("level"):
+		level = node
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,8 +28,18 @@ func _process(delta: float) -> void:
 	else:
 		global_position = get_global_mouse_position()
 		if Input.is_action_just_pressed("click"):
-			placing = false
-			get_parent()._pay_and_build()
+			if not level.money >= 2:
+				placing = true
+				get_parent().get_node("notification/Label").text = "Not Enough Money"
+				get_parent().get_node("notification/Label").label_settings.font_color = Color(255,0,0,1)
+			elif level.money >= 2:
+				get_parent()._pay_and_build()
+				placing = false
+				get_parent().get_node("notification/Label").text = "Place Successfully!"
+				get_parent().get_node("notification/Label").label_settings.font_color = Color(0,255,0,1)
+
+			
+
 	
 func _shoot() -> void:
 	var bullet = bullet_scene.instantiate()

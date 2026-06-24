@@ -27,10 +27,14 @@ bg_color = Color(0.39607844, 0.627451, 0.7921569, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_ppgk2"]
 font_size = 34
 
-[node name="Node2D" type="Node2D" unique_id=96619386 node_paths=PackedStringArray("money_label") groups=["level"]]
+[sub_resource type="LabelSettings" id="LabelSettings_2r41h"]
+font_color = Color(0.78431374, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" unique_id=96619386 node_paths=PackedStringArray("money_label", "notification") groups=["level"]]
 script = ExtResource("1_ppgk2")
 unit_scene = ExtResource("3_mx8sn")
 money_label = NodePath("CanvasLayer2/Label")
+notification = NodePath("notification/Label")
 
 [node name="spawner" type="Timer" parent="." unique_id=1426996698]
 wait_time = 2.0
@@ -133,6 +137,16 @@ offset_top = 19.0
 offset_right = 981.0
 offset_bottom = 97.0
 label_settings = SubResource("LabelSettings_ppgk2")
+
+[node name="notification" type="CanvasLayer" parent="." unique_id=170478134]
+
+[node name="Label" type="Label" parent="notification" unique_id=1679954575]
+offset_left = 451.0
+offset_top = 600.0
+offset_right = 775.0
+offset_bottom = 629.0
+label_settings = SubResource("LabelSettings_2r41h")
+horizontal_alignment = 1
 
 [connection signal="timeout" from="spawner" to="Path2D" method="_on_spawner_timeout"]
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_unit_place_button"]
