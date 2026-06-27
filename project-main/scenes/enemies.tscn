@@ -5,8 +5,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4yn1"]
 size = Vector2(124.54212, 124.54212)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=175166536 groups=["enemy"]]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y16gg"]
+bg_color = Color(1, 0.33043876, 0.37013736, 1)
+border_color = Color(0, 0.93402034, 0.7427781, 1)
+corner_detail = 19
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4yn1"]
+bg_color = Color(0, 0.7218641, 0.2962505, 1)
+corner_detail = 9
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=175166536 node_paths=PackedStringArray("health_ui") groups=["enemy"]]
 script = ExtResource("1_y16gg")
+health_ui = NodePath("ProgressBar")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=752499259]
 offset_left = -17.0
@@ -19,3 +29,14 @@ color = Color(0.83430856, 0, 0.21608043, 1)
 position = Vector2(2.0861626e-07, 4.7683716e-07)
 scale = Vector2(0.273, 0.273)
 shape = SubResource("RectangleShape2D_q4yn1")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1585921168]
+offset_left = -20.0
+offset_top = -28.0
+offset_right = 20.0
+offset_bottom = -20.0
+theme_override_styles/background = SubResource("StyleBoxFlat_y16gg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q4yn1")
+max_value = 10.0
+step = 1.0
+show_percentage = false

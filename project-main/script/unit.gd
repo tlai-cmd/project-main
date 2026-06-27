@@ -5,6 +5,7 @@ var closest_enemy: CharacterBody2D
 var shoot_switch: bool = true
 var placing = true
 var level: Node2D
+var placement_ui:bool = true
 
 @export var bullet_scene: PackedScene
 @export var bullet_spawn: Marker2D
@@ -17,7 +18,9 @@ func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("level"):
 		level = node
 
-
+		
+		
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if placing == false:
@@ -33,14 +36,18 @@ func _process(delta: float) -> void:
 				get_parent().get_node("notification/Label").text = "Not Enough Money"
 				get_parent().get_node("notification/Label").label_settings.font_color = Color(255,0,0,1)
 			elif level.money >= 2:
-				get_parent()._pay_and_build()
 				placing = false
 				get_parent().get_node("notification/Label").text = "Place Successfully!"
-				get_parent().get_node("notification/Label").label_settings.font_color = Color(0,255,0,1)
-
-			
-
-	
+				get_parent().get_node("notification/Label").label_settings.font_color = Color(0.0, 0.325, 0.0, 1.0)
+				if level.placing_amount > 2:
+					placing = true
+					get_parent().get_node("notification/Label").text = "Max Placement!"
+					get_parent().get_node("notification/Label").label_settings.font_color = Color(255,0,0,1)
+					queue_free()
+				else:
+					get_parent()._pay_and_build()
+					
+					
 func _shoot() -> void:
 	var bullet = bullet_scene.instantiate()
 	bullet.rotation = bullet_spawn.global_rotation + deg_to_rad(90)

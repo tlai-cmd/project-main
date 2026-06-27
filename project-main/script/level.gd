@@ -2,15 +2,23 @@ extends Node2D
 @export var unit_scene: PackedScene
 @export var money_label: Label
 @export var notification: Label
+@export var base: Area2D
+@export var base_health_ui: ProgressBar
+
 var placing = false
 var money = 3
+var placing_amount = 0
+var base_health = 4
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	base_health_ui.max_value = base_health
+	base_health_ui.value = base_health
 
 func _pay_and_build() -> void:
 	placing = false
 	money -= 2
+	placing_amount += 1
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,3 +29,13 @@ func _unit_place_button() -> void:
 	if placing == false:
 		var unit = unit_scene.instantiate()
 		add_child(unit)
+
+
+func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+	if body.is_in_group("enemy"):
+		base_health -= 1
+		base_health_ui.value = base_health
+	if base_health == 0:
+		get_tree().call_deferred("reload_current_scene")
+		
+		
