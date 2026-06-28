@@ -1,21 +1,20 @@
 [gd_scene format=3 uid="uid://hr237byocdv5"]
 
 [ext_resource type="Script" uid="uid://dkjoxuc86isej" path="res://script/bullet.gd" id="1_mkf8s"]
+[ext_resource type="Texture2D" uid="uid://d3bxepthnofqb" path="res://assets/tower/49.png" id="2_y25gk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1aey"]
-size = Vector2(20, 4)
+[sub_resource type="CircleShape2D" id="CircleShape2D_l5glv"]
+radius = 9.0
 
 [node name="Area2D" type="Area2D" unique_id=1384321310]
 script = ExtResource("1_mkf8s")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=107951890]
-offset_left = -10.0
-offset_top = -2.0
-offset_right = 10.0
-offset_bottom = 2.0
-color = Color(5.7756904e-07, 0.7607408, 0.6661643, 1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=123270705]
-shape = SubResource("RectangleShape2D_h1aey")
+shape = SubResource("CircleShape2D_l5glv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=226737045]
+position = Vector2(-5.9604645e-08, 5.9604645e-08)
+scale = Vector2(0.10472974, 0.10472974)
+texture = ExtResource("2_y25gk")
 
 [connection signal="body_entered" from="." to="." method="_damage"]

@@ -2,33 +2,38 @@
 
 [ext_resource type="Script" uid="uid://bjch7t080ucec" path="res://script/unit.gd" id="1_o7ajc"]
 [ext_resource type="PackedScene" uid="uid://hr237byocdv5" path="res://scenes/bullet.tscn" id="2_k673f"]
+[ext_resource type="Texture2D" uid="uid://dr2aufq8geimi" path="res://assets/tower/1.png" id="3_tb304"]
+[ext_resource type="Texture2D" uid="uid://dxonsgth6ovdk" path="res://assets/tower/3.png" id="4_ruro2"]
+[ext_resource type="Texture2D" uid="uid://jh1l0kvylk8t" path="res://assets/tower/2.png" id="5_e8hdl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7ajc"]
 radius = 128.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7ajc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(5.968213e-06, 0.91524005, 0.3664691, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.5994093, 0.88211757, 1, 1)
 corner_radius_top_left = 888
 corner_radius_top_right = 888
 corner_radius_bottom_right = 888
 corner_radius_bottom_left = 888
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lf63s"]
-size = Vector2(35, 35)
+size = Vector2(61, 68)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1839986940 node_paths=PackedStringArray("bullet_spawn", "timer", "pivot") groups=["unit"]]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1839986940 node_paths=PackedStringArray("bullet_spawn", "timer", "pivot", "marker") groups=["unit"]]
 script = ExtResource("1_o7ajc")
 bullet_scene = ExtResource("2_k673f")
 bullet_spawn = NodePath("Node2D/Marker2D")
 timer = NodePath("cooldown")
 pivot = NodePath("Node2D")
+marker = NodePath("Node2D/Marker2D")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2075252876]
+position = Vector2(0, -7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=39596314]
 shape = SubResource("CircleShape2D_o7ajc")
@@ -42,69 +47,30 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_o7ajc")
 
 [node name="cooldown" type="Timer" parent="." unique_id=1425831481]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300474670]
-position = Vector2(-0.5, 0.5)
-shape = SubResource("RectangleShape2D_lf63s")
-
 [node name="Node2D" type="Node2D" parent="." unique_id=1418575577]
 
-[node name="ColorRect8" type="ColorRect" parent="Node2D" unique_id=1227890744]
-offset_left = -18.0
-offset_top = 5.0
-offset_right = 17.0
-offset_bottom = 18.0
-color = Color(0.6441561, 0.9999997, 0.831178, 1)
+[node name="1" type="Sprite2D" parent="Node2D" unique_id=1852437145]
+position = Vector2(-1, -11)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("3_tb304")
 
-[node name="ColorRect2" type="ColorRect" parent="Node2D" unique_id=957925384]
-offset_left = -16.0
-offset_top = -5.0
-offset_right = 12.0
-offset_bottom = 5.0
-color = Color(0.6441561, 0.9999997, 0.831178, 1)
+[node name="3" type="Sprite2D" parent="Node2D" unique_id=275557796]
+position = Vector2(0.9999962, 3.8146973e-06)
+scale = Vector2(0.40853658, 0.4085366)
+texture = ExtResource("4_ruro2")
 
-[node name="ColorRect" type="ColorRect" parent="Node2D" unique_id=1095897847]
-offset_left = -18.0
-offset_top = -17.0
-offset_right = 17.0
-offset_bottom = -5.0
-color = Color(0.6441561, 0.9999997, 0.831178, 1)
+[node name="2" type="Sprite2D" parent="Node2D" unique_id=1927000359]
+position = Vector2(-1.0000004, 2)
+scale = Vector2(0.37500003, 0.375)
+texture = ExtResource("5_e8hdl")
 
 [node name="Marker2D" type="Marker2D" parent="Node2D" unique_id=735585276]
-position = Vector2(28, 0)
+position = Vector2(0, -7)
 rotation = -1.568428
 
-[node name="ColorRect3" type="ColorRect" parent="Node2D" unique_id=948649444]
-offset_left = -18.0
-offset_top = -17.0
-offset_right = 17.0
-offset_bottom = -15.0
-
-[node name="ColorRect4" type="ColorRect" parent="Node2D" unique_id=387598408]
-offset_left = -18.0
-offset_top = 16.0
-offset_right = 17.0
-offset_bottom = 18.0
-
-[node name="ColorRect5" type="ColorRect" parent="Node2D" unique_id=1426080316]
-offset_left = -1.0
-offset_top = -3.0
-offset_right = 28.0
-offset_bottom = 3.0
-color = Color(3.272891e-06, 0.6444084, 0.44923067, 1)
-
-[node name="ColorRect6" type="ColorRect" parent="Node2D" unique_id=1705132468]
-offset_left = -13.0
-offset_top = -9.0
-offset_right = 13.0
-offset_bottom = 4.0
-color = Color(3.272891e-06, 0.6444084, 0.44923067, 1)
-
-[node name="ColorRect7" type="ColorRect" parent="Node2D" unique_id=264864845]
-offset_left = -13.0
-offset_top = 3.0
-offset_right = 13.0
-offset_bottom = 9.0
-color = Color(3.272891e-06, 0.6444084, 0.44923067, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300474670]
+position = Vector2(-1.5, -2)
+shape = SubResource("RectangleShape2D_lf63s")
 
 [connection signal="body_entered" from="Area2D" to="." method="_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_body_exited"]

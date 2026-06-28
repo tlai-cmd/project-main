@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dnqicyqr6272t" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/AI/Artboard 1.png" id="3_2r41h"]
 [ext_resource type="PackedScene" uid="uid://uljl4jcak26m" path="res://scenes/unit.tscn" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://dpsnfs0wxt8uy" path="res://scenes/pathspawner.tscn" id="3_w8frs"]
-[ext_resource type="Texture2D" uid="uid://b72ireijwrjdu" path="res://assets/Screenshot 2026-06-23 142238.png" id="5_2r41h"]
 [ext_resource type="Texture2D" uid="uid://bvt2x7xy5cgmd" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_3/layers/road_3.png" id="5_b121j"]
 [ext_resource type="Texture2D" uid="uid://fiw45kllwrsk" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_3/layers/road_4.png" id="6_8iemx"]
 [ext_resource type="Texture2D" uid="uid://d25ed8eyl053r" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_3/layers/decor_5.png" id="6_82cfe"]
@@ -18,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://b7s1ktv4bc5d2" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_3/layers/stone_2.png" id="11_ux5qa"]
 [ext_resource type="Texture2D" uid="uid://caa5y3mmhhev6" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_3/layers/stone_4.png" id="12_82cfe"]
 [ext_resource type="Texture2D" uid="uid://d3ofmbi52hvd1" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_3/layers/tree_1.png" id="13_gunhw"]
+[ext_resource type="Texture2D" uid="uid://dhj1eovxpnphx" path="res://assets/tower/Screenshot 2026-06-29 101007 - Copy.png" id="18_gunhw"]
+[ext_resource type="FontFile" uid="uid://cspxdvwnehhm8" path="res://assets/font/Fredoka-Medium.ttf" id="19_8gofh"]
+[ext_resource type="FontFile" uid="uid://b6wf2sqncsqn8" path="res://assets/font/PasseroOne-Regular.ttf" id="19_gunhw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klq6b"]
 texture = ExtResource("7_klq6b")
@@ -106,23 +108,46 @@ point_count = 11
 size = Vector2(74.5, 103)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8frs"]
-bg_color = Color(0.085822485, 0.28529492, 0.26202223, 1)
+bg_color = Color(0.28816873, 0.6423247, 0.94334346, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.09172989, 0.4447183, 0.708186, 1)
+border_blend = true
+corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx8sn"]
-bg_color = Color(0.15594742, 0.38586769, 0.22517097, 1)
+bg_color = Color(0.37936777, 0.6716511, 0.7158488, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.09019608, 0.44313726, 0.70980394, 1)
+border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppgk2"]
-bg_color = Color(0.19192943, 0.6973383, 0.5058354, 1)
+bg_color = Color(0.51505464, 0.7584115, 0.9822914, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.05341202, 0.3422416, 0.55732733, 1)
+border_blend = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_klq6b"]
+font = ExtResource("19_8gofh")
+font_size = 17
+font_color = Color(0.17305398, 0.99963945, 3.85046e-06, 1)
+outline_size = 2
+outline_color = Color(0, 0.28235295, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ppgk2"]
+font = ExtResource("19_gunhw")
 font_size = 34
 
 [sub_resource type="LabelSettings" id="LabelSettings_2r41h"]
 font_color = Color(0.78431374, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_klq6b"]
-font_size = 21
-font_color = Color(0, 0.35155076, 1.92523e-07, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2r41h"]
 bg_color = Color(1, 0.34957257, 0.21065864, 1)
@@ -211,15 +236,24 @@ color = Color(0.2627451, 0.43529412, 0.5647059, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2010603082]
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=834182416]
-offset_left = 1024.0
-offset_top = 16.0
-offset_right = 1122.0
-offset_bottom = 97.0
+offset_left = 1036.0
+offset_top = 24.0
+offset_right = 1114.0
+offset_bottom = 102.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_w8frs")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mx8sn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ppgk2")
-icon = ExtResource("5_2r41h")
+icon = ExtResource("18_gunhw")
 icon_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1625363249]
+offset_left = 1036.0
+offset_top = 79.0
+offset_right = 1114.0
+offset_bottom = 102.0
+text = "$2.0"
+label_settings = SubResource("LabelSettings_klq6b")
+horizontal_alignment = 1
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=845650599]
 
@@ -238,17 +272,6 @@ offset_top = 600.0
 offset_right = 775.0
 offset_bottom = 629.0
 label_settings = SubResource("LabelSettings_2r41h")
-horizontal_alignment = 1
-
-[node name="price" type="CanvasLayer" parent="." unique_id=1503714175]
-
-[node name="Label" type="Label" parent="price" unique_id=1625363249]
-offset_left = 1026.0
-offset_top = 107.0
-offset_right = 1124.0
-offset_bottom = 137.0
-text = "$2"
-label_settings = SubResource("LabelSettings_klq6b")
 horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=2042509847]

@@ -11,6 +11,7 @@ var placement_ui:bool = true
 @export var bullet_spawn: Marker2D
 @export var timer: Timer
 @export var pivot: Node2D
+@export var marker: Marker2D
 
 func _ready() -> void:
 	for i in get_tree().get_nodes_in_group("enemy"):
@@ -25,7 +26,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if placing == false:
 		if not closest_enemy == null:
-			pivot.look_at(closest_enemy.global_position)
+			marker.look_at(closest_enemy.global_position)
 			if shoot_switch == true:
 				_shoot()
 	else:
@@ -50,7 +51,7 @@ func _process(delta: float) -> void:
 					
 func _shoot() -> void:
 	var bullet = bullet_scene.instantiate()
-	bullet.rotation = bullet_spawn.global_rotation + deg_to_rad(90)
+	bullet.rotation = bullet_spawn.global_rotation
 	bullet.global_position = bullet_spawn.global_position
 	add_sibling(bullet)
 	shoot_switch = false
