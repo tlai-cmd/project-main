@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://d3ofmbi52hvd1" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_3/layers/tree_1.png" id="13_gunhw"]
 [ext_resource type="Texture2D" uid="uid://dhj1eovxpnphx" path="res://assets/tower/Screenshot 2026-06-29 101007 - Copy.png" id="18_gunhw"]
 [ext_resource type="FontFile" uid="uid://cspxdvwnehhm8" path="res://assets/font/Fredoka-Medium.ttf" id="19_8gofh"]
-[ext_resource type="FontFile" uid="uid://b6wf2sqncsqn8" path="res://assets/font/PasseroOne-Regular.ttf" id="19_gunhw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klq6b"]
 texture = ExtResource("7_klq6b")
@@ -100,9 +99,9 @@ sources/11 = SubResource("TileSetAtlasSource_3ies3")
 
 [sub_resource type="Curve2D" id="Curve2D_rd3vj"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 110, 143, -33.6743, -24.889702, 33.6743, 24.889702, 129, 530, -58.98752, 1.2418425, 58.98752, -1.2418425, 206, 569, -9.93474, 9.313819, 9.93474, -9.313819, 280, 534, -10.518407, 28.549961, 10.518407, -28.549961, 303, 305, 0, 0, 0, 0, 365, 261, -17.28024, -7.5131474, 17.28024, 7.5131474, 880, 266, -6.010518, -21.788128, 6.010518, 21.788128, 919, 322, -11.269721, -26.296017, 11.269721, 26.296017, 925, 514, -19.534184, -6.010518, 19.534184, 6.010518, 968, 558, 0, 0, 0, 0, 1037, 559)
+"points": PackedVector2Array(0, 0, 0, 0, -75, 85, -35.39251, -5.588291, 35.39251, 5.588291, 24, 84, -16.764874, -43.464485, 16.764874, 43.464485, 113, 140, -33.6743, -24.889702, 33.6743, 24.889702, 129, 530, -58.98752, 1.2418425, 58.98752, -1.2418425, 206, 569, -9.93474, 9.313819, 9.93474, -9.313819, 280, 534, -10.518407, 28.549961, 10.518407, -28.549961, 303, 305, 0, 0, 0, 0, 365, 261, -17.28024, -7.5131474, 17.28024, 7.5131474, 880, 266, -6.010518, -21.788128, 6.010518, 21.788128, 919, 322, -11.269721, -26.296017, 11.269721, 26.296017, 925, 514, -19.534184, -6.010518, 19.534184, 6.010518, 968, 558, 0, 0, 0, 0, 1037, 559)
 }
-point_count = 11
+point_count = 13
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c3h"]
 size = Vector2(74.5, 103)
@@ -142,9 +141,17 @@ font_color = Color(0.17305398, 0.99963945, 3.85046e-06, 1)
 outline_size = 2
 outline_color = Color(0, 0.28235295, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gofh"]
+bg_color = Color(0.16470589, 0.16470589, 0.16470589, 0.88235295)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
 [sub_resource type="LabelSettings" id="LabelSettings_ppgk2"]
-font = ExtResource("19_gunhw")
-font_size = 34
+font = ExtResource("19_8gofh")
+font_size = 32
+font_color = Color(0.4862745, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2r41h"]
 font_color = Color(0.78431374, 0, 0, 1)
@@ -154,6 +161,13 @@ bg_color = Color(1, 0.34957257, 0.21065864, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klq6b"]
 bg_color = Color(2.2140146e-06, 0.7129784, 0.44211984, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gunhw"]
+bg_color = Color(0, 0, 0, 0.7647059)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gunhw"]
+font = ExtResource("19_8gofh")
+font_size = 32
 
 [node name="Node2D" type="Node2D" unique_id=96619386 node_paths=PackedStringArray("money_label", "notification", "base", "base_health_ui") groups=["level"]]
 script = ExtResource("1_ppgk2")
@@ -174,30 +188,26 @@ position = Vector2(584, 328.00003)
 scale = Vector2(0.6393519, 0.6393519)
 texture = ExtResource("3_2r41h")
 
-[node name="ColorRect2" type="ColorRect" parent="map" unique_id=2136766232]
-offset_left = 64.0
-offset_top = 93.0
-offset_right = 167.0
-offset_bottom = 168.0
-
 [node name="TileMap" type="TileMap" parent="map" unique_id=1724360331]
 scale = Vector2(0.5, 0.5)
 tile_set = SubResource("TileSet_b121j")
 rendering_quadrant_size = 23
 format = 2
-layer_0/tile_data = PackedInt32Array(1900558, 0, 0, 2686990, 0, 0, 3342350, 0, 0, 4390929, 1, 0, 4390945, 2, 0, 3342372, 0, 0, 2293799, 3, 0, 2097207, 4, 0, 2097222, 4, 0, 2097232, 4, 0, 2097242, 4, 0, 2097250, 4, 0, 2293872, 5, 0, 3342451, 0, 0, 4391030, 1, 0, 1835022, 0, 0, 1507464, 6, 0, 983082, 7, 0, 3473506, 7, 0, 1048669, 7, 0, 2883719, 7, 0, 1179704, 8, 0, 1245291, 8, 0, 3866649, 8, 0, 4128871, 8, 0, 1835034, 9, 0, 4915299, 9, 0, 4849707, 9, 0, 393286, 10, 0, 5111811, 11, 0)
+layer_0/tile_data = PackedInt32Array(1900558, 0, 0, 2686990, 0, 0, 3342350, 0, 0, 4390929, 1, 0, 4390945, 2, 0, 3342372, 0, 0, 2293799, 3, 0, 2097207, 4, 0, 2097222, 4, 0, 2097232, 4, 0, 2097242, 4, 0, 2097250, 4, 0, 2293872, 5, 0, 3342451, 0, 0, 4391030, 1, 0, 1835022, 0, 0, 1507464, 6, 0, 983082, 7, 0, 3473506, 7, 0, 1048669, 7, 0, 2883719, 7, 0, 1179704, 8, 0, 1245291, 8, 0, 3866649, 8, 0, 4128871, 8, 0, 1835034, 9, 0, 4915299, 9, 0, 4849707, 9, 0, 393286, 10, 0, 5111811, 11, 0, 851979, 5, 0, 720891, 4, 0)
 
-[node name="Path2D" type="Path2D" parent="." unique_id=1763124704 node_paths=PackedStringArray("timer", "tower_zone")]
+[node name="Path2D" type="Path2D" parent="." unique_id=1763124704 node_paths=PackedStringArray("timer", "tower_zone", "wave_timer", "wave_ui")]
 position = Vector2(3, 0)
 curve = SubResource("Curve2D_rd3vj")
 script = ExtResource("1_w8frs")
 timer = NodePath("../spawner")
 enemy = ExtResource("3_w8frs")
 tower_zone = NodePath("../Area2D")
+wave_timer = NodePath("../wave")
+wave_ui = NodePath("../waveui/wave")
 
 [node name="PathFollow2D" parent="Path2D" unique_id=1528065059 instance=ExtResource("3_w8frs")]
-position = Vector2(110, 143)
-rotation = 1.6112986
+position = Vector2(-75, 85)
+rotation = -0.10320919
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1640597057]
 
@@ -257,12 +267,21 @@ horizontal_alignment = 1
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=845650599]
 
+[node name="Panel" type="Panel" parent="CanvasLayer2" unique_id=317241638]
+offset_left = 390.0
+offset_top = 16.0
+offset_right = 466.69458
+offset_bottom = 60.565224
+scale = Vector2(2.3600097, 0.83999974)
+theme_override_styles/panel = SubResource("StyleBoxFlat_8gofh")
+
 [node name="Label" type="Label" parent="CanvasLayer2" unique_id=1478148952]
-offset_left = 786.0
-offset_top = 19.0
-offset_right = 981.0
-offset_bottom = 97.0
+offset_left = 381.0
+offset_top = 16.0
+offset_right = 576.0
+offset_bottom = 58.0
 label_settings = SubResource("LabelSettings_ppgk2")
+horizontal_alignment = 1
 
 [node name="notification" type="CanvasLayer" parent="." unique_id=170478134]
 
@@ -283,6 +302,25 @@ theme_override_styles/background = SubResource("StyleBoxFlat_2r41h")
 theme_override_styles/fill = SubResource("StyleBoxFlat_klq6b")
 max_value = 10.0
 step = 1.0
+
+[node name="wave" type="Timer" parent="." unique_id=433748579]
+
+[node name="waveui" type="CanvasLayer" parent="." unique_id=1639740370]
+
+[node name="Panel" type="Panel" parent="waveui" unique_id=653557864]
+offset_left = 592.0
+offset_top = 16.0
+offset_right = 749.0
+offset_bottom = 53.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gunhw")
+
+[node name="wave" type="Label" parent="waveui" unique_id=879237642]
+offset_left = 592.0
+offset_top = 16.0
+offset_right = 748.0
+offset_bottom = 56.0
+label_settings = SubResource("LabelSettings_gunhw")
+horizontal_alignment = 1
 
 [connection signal="timeout" from="spawner" to="Path2D" method="_on_spawner_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

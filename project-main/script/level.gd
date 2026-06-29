@@ -6,9 +6,13 @@ extends Node2D
 @export var base_health_ui: ProgressBar
 
 var placing = false
-var money = 3
-var placing_amount = 0
-var base_health = 4
+var money:int = 3
+var placing_amount:int = 0
+var base_health:int = 4
+var wave: int = 0
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	base_health_ui.max_value = base_health
@@ -23,7 +27,7 @@ func _pay_and_build() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	money_label.text = "Cash:" + str(money)
+	money_label.text = "Cash:$" + str(money)
 
 func _unit_place_button() -> void:
 	if placing == false:

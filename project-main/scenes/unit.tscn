@@ -10,12 +10,12 @@
 radius = 128.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7ajc"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(1, 1, 1, 0)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.5994093, 0.88211757, 1, 1)
+border_color = Color(0.23094213, 0.30937964, 1.085, 0.498)
 corner_radius_top_left = 888
 corner_radius_top_right = 888
 corner_radius_bottom_right = 888
