@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b7s1ktv4bc5d2" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_3/layers/stone_2.png" id="11_ux5qa"]
 [ext_resource type="Texture2D" uid="uid://caa5y3mmhhev6" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_3/layers/stone_4.png" id="12_82cfe"]
 [ext_resource type="Texture2D" uid="uid://d3ofmbi52hvd1" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_3/layers/tree_1.png" id="13_gunhw"]
+[ext_resource type="PackedScene" uid="uid://cyc8ywi6fol2t" path="res://scenes/boss.tscn" id="18_8gofh"]
 [ext_resource type="Texture2D" uid="uid://dhj1eovxpnphx" path="res://assets/tower/Screenshot 2026-06-29 101007 - Copy.png" id="18_gunhw"]
 [ext_resource type="FontFile" uid="uid://cspxdvwnehhm8" path="res://assets/font/Fredoka-Medium.ttf" id="19_8gofh"]
 
@@ -176,6 +177,7 @@ money_label = NodePath("CanvasLayer2/Label")
 notification = NodePath("notification/Label")
 base = NodePath("Area2D")
 base_health_ui = NodePath("ProgressBar")
+boss_scene = ExtResource("18_8gofh")
 
 [node name="spawner" type="Timer" parent="." unique_id=1426996698]
 wait_time = 2.0
@@ -195,15 +197,15 @@ rendering_quadrant_size = 23
 format = 2
 layer_0/tile_data = PackedInt32Array(1900558, 0, 0, 2686990, 0, 0, 3342350, 0, 0, 4390929, 1, 0, 4390945, 2, 0, 3342372, 0, 0, 2293799, 3, 0, 2097207, 4, 0, 2097222, 4, 0, 2097232, 4, 0, 2097242, 4, 0, 2097250, 4, 0, 2293872, 5, 0, 3342451, 0, 0, 4391030, 1, 0, 1835022, 0, 0, 1507464, 6, 0, 983082, 7, 0, 3473506, 7, 0, 1048669, 7, 0, 2883719, 7, 0, 1179704, 8, 0, 1245291, 8, 0, 3866649, 8, 0, 4128871, 8, 0, 1835034, 9, 0, 4915299, 9, 0, 4849707, 9, 0, 393286, 10, 0, 5111811, 11, 0, 851979, 5, 0, 720891, 4, 0)
 
-[node name="Path2D" type="Path2D" parent="." unique_id=1763124704 node_paths=PackedStringArray("timer", "tower_zone", "wave_timer", "wave_ui")]
+[node name="Path2D" type="Path2D" parent="." unique_id=1763124704 node_paths=PackedStringArray("timer", "tower_zone", "wave_ui")]
 position = Vector2(3, 0)
 curve = SubResource("Curve2D_rd3vj")
 script = ExtResource("1_w8frs")
 timer = NodePath("../spawner")
 enemy = ExtResource("3_w8frs")
 tower_zone = NodePath("../Area2D")
-wave_timer = NodePath("../wave")
 wave_ui = NodePath("../waveui/wave")
+boss_scene = ExtResource("18_8gofh")
 
 [node name="PathFollow2D" parent="Path2D" unique_id=1528065059 instance=ExtResource("3_w8frs")]
 position = Vector2(-75, 85)
@@ -302,8 +304,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_2r41h")
 theme_override_styles/fill = SubResource("StyleBoxFlat_klq6b")
 max_value = 10.0
 step = 1.0
-
-[node name="wave" type="Timer" parent="." unique_id=433748579]
 
 [node name="waveui" type="CanvasLayer" parent="." unique_id=1639740370]
 
