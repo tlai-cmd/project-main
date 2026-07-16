@@ -177,7 +177,6 @@ money_label = NodePath("CanvasLayer2/Label")
 notification = NodePath("notification/Label")
 base = NodePath("Area2D")
 base_health_ui = NodePath("ProgressBar")
-boss_scene = ExtResource("18_8gofh")
 
 [node name="spawner" type="Timer" parent="." unique_id=1426996698]
 wait_time = 2.0

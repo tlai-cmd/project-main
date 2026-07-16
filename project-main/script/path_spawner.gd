@@ -31,8 +31,13 @@ func _on_spawner_timeout() -> void:
 			enemy_quantity = 0
 	else:
 		boss_spawned = true
+
+func _boss_spawn() -> void:
+	if boss_spawned:
 		var boss = boss_scene.instantiate()
 		add_child(boss)
+		boss_spawned = false
+
 	
 func new_wave() -> void:
 	wave_number += 1

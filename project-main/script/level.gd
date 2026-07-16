@@ -4,7 +4,6 @@ extends Node2D
 @export var notification: Label
 @export var base: Area2D
 @export var base_health_ui: ProgressBar
-@export var boss_scene: PackedScene
 
 
 var placing = false
