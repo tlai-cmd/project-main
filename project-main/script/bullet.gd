@@ -6,6 +6,6 @@ func _process(delta: float) -> void:
 
 
 func _damage(body: Node2D) -> void:
-	if body.is_in_group("enemy"):
+	if body.is_in_group("enemy") or body.is_in_group("boss"):
 		body.take_damage()
 		queue_free()

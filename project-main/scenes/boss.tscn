@@ -6,11 +6,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd8r6"]
 size = Vector2(34, 34)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_neq0i"]
+bg_color = Color(0.6901961, 0.6, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jncid"]
+bg_color = Color(0.4117647, 0.5764706, 1, 1)
+
 [node name="PathFollow2D" type="PathFollow2D" unique_id=2045046033]
 loop = false
 script = ExtResource("1_neq0i")
 
-[node name="boss" type="CharacterBody2D" parent="." unique_id=1454883620 groups=["enemy"]]
+[node name="boss" type="CharacterBody2D" parent="." unique_id=1454883620 groups=["boss"]]
 script = ExtResource("1_dlmty")
 
 [node name="ColorRect" type="ColorRect" parent="boss" unique_id=373360101]
@@ -22,3 +28,15 @@ color = Color(0.40731123, 0, 0.065878674, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boss" unique_id=509313072]
 shape = SubResource("RectangleShape2D_xd8r6")
+
+[node name="ProgressBar" type="ProgressBar" parent="boss" unique_id=1520369806]
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 20.0
+offset_bottom = -21.0
+theme_override_styles/background = SubResource("StyleBoxFlat_neq0i")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jncid")
+max_value = 10.0
+step = 1.0
+value = 10.0
+show_percentage = false

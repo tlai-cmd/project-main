@@ -40,6 +40,9 @@ func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("enemy"):
 		base_health -= 1
 		base_health_ui.value = base_health
+	if body.is_in_group("boss"):
+		base_health -= 2
+		base_health_ui.value = base_health
 	if base_health == 0:
 		get_tree().call_deferred("reload_current_scene")
 		

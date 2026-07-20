@@ -3,6 +3,7 @@ var wave_number:int = 0
 var enemy_quantity: int = 0
 var max_enemy_value: int = 1
 var boss_spawned: bool = false
+var boss_count:int = 0
 
 @export var timer: Timer
 @export var enemy: PackedScene
@@ -21,7 +22,7 @@ func _process(delta: float) -> void:
 		
 	
 func _on_spawner_timeout() -> void:
-	if wave_number < 10:
+	if wave_number % 10 != 0:
 		if enemy_quantity < max_enemy_value:
 			var enemy_scene = enemy.instantiate()
 			add_child(enemy_scene)
@@ -31,14 +32,19 @@ func _on_spawner_timeout() -> void:
 			enemy_quantity = 0
 	else:
 		boss_spawned = true
+		_boss_spawn()
 
 func _boss_spawn() -> void:
 	if boss_spawned:
 		var boss = boss_scene.instantiate()
 		add_child(boss)
-		boss_spawned = false
+		boss_count += 1
+		if boss_count <= 1:
+			boss_spawned = false
+			boss_count -= 1
+			new_wave()
 
-	
+		
 func new_wave() -> void:
 	wave_number += 1
 	await get_tree().create_timer(20.0).timeout

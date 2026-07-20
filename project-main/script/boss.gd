@@ -18,5 +18,4 @@ func take_damage() -> void:
 		health -= 1
 	else:
 		queue_free()
-		level.money += 1
-	
+		level.money += 4

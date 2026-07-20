@@ -58,7 +58,7 @@ func _shoot() -> void:
 	timer.start()
 	
 func _body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy"):
+	if body.is_in_group("enemy") or body.is_in_group("boss"):
 		closest_enemy = body
 		if placing == false:
 			enemies.append(body)
@@ -69,7 +69,7 @@ func _body_entered(body: Node2D) -> void:
 
 
 func _body_exited(body: Node2D) -> void:
-	if body.is_in_group("enemy"):
+	if body.is_in_group("enemy") or body.is_in_group("boss"):
 		if placing == false:
 			enemies.erase(body)
 		if body == closest_enemy:
