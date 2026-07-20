@@ -16,8 +16,9 @@ bg_color = Color(0.4117647, 0.5764706, 1, 1)
 loop = false
 script = ExtResource("1_neq0i")
 
-[node name="boss" type="CharacterBody2D" parent="." unique_id=1454883620 groups=["boss"]]
+[node name="boss" type="CharacterBody2D" parent="." unique_id=1454883620 node_paths=PackedStringArray("health_ui") groups=["boss"]]
 script = ExtResource("1_dlmty")
+health_ui = NodePath("ProgressBar")
 
 [node name="ColorRect" type="ColorRect" parent="boss" unique_id=373360101]
 offset_left = -17.0
