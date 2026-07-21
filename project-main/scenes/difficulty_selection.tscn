@@ -79,7 +79,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="Control" type="Control" unique_id=471920485]
+[node name="Control" type="Control" unique_id=471920485 node_paths=PackedStringArray("transition", "timer_transition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,6 +87,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nibr4")
+transition = NodePath("fade_transition")
+timer_transition = NodePath("fade_transition/Timer")
 
 [node name="Panel" type="Panel" parent="." unique_id=742869424]
 layout_mode = 1
@@ -97,16 +99,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_jh0do")
 
-[node name="art_2" type="Node2D" parent="." unique_id=1373918767]
+[node name="selec_2" type="Node2D" parent="." unique_id=1373918767]
 
-[node name="Panel" type="Panel" parent="art_2" unique_id=713068137]
+[node name="Panel" type="Panel" parent="selec_2" unique_id=713068137]
 offset_left = 635.0
 offset_top = 122.0
 offset_right = 998.0
 offset_bottom = 534.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_sirkt")
 
-[node name="Label" type="Label" parent="art_2" unique_id=1288656451]
+[node name="Label" type="Label" parent="selec_2" unique_id=1288656451]
 offset_left = 636.0
 offset_top = 135.0
 offset_right = 997.0
@@ -115,7 +117,7 @@ text = "???"
 label_settings = SubResource("LabelSettings_nibr4")
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="art_2" unique_id=2015375485]
+[node name="Label2" type="Label" parent="selec_2" unique_id=2015375485]
 offset_left = 624.0
 offset_top = 405.0
 offset_right = 1009.0
@@ -124,7 +126,7 @@ text = "Difficulty: ???"
 label_settings = SubResource("LabelSettings_npojr")
 horizontal_alignment = 1
 
-[node name="Button2" type="Button" parent="art_2" unique_id=2096838764]
+[node name="Button2" type="Button" parent="selec_2" unique_id=2096838764]
 offset_left = 754.0
 offset_top = 455.0
 offset_right = 888.0
@@ -134,23 +136,23 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_nibr4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_npojr")
 text = "Select"
 
-[node name="art_1" type="Node2D" parent="." unique_id=831167661]
+[node name="selec_1" type="Node2D" parent="." unique_id=831167661]
 
-[node name="Panel2" type="Panel" parent="art_1" unique_id=132044482]
+[node name="Panel2" type="Panel" parent="selec_1" unique_id=132044482]
 offset_left = 172.0
 offset_top = 122.0
 offset_right = 534.0
 offset_bottom = 533.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3y6n7")
 
-[node name="Panel" type="Panel" parent="art_1" unique_id=842759184]
+[node name="Panel" type="Panel" parent="selec_1" unique_id=842759184]
 offset_left = 183.0
 offset_top = 162.0
 offset_right = 521.0
 offset_bottom = 392.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_167uk")
 
-[node name="Label" type="Label" parent="art_1" unique_id=1668819484]
+[node name="Label" type="Label" parent="selec_1" unique_id=1668819484]
 offset_left = 170.0
 offset_top = 135.0
 offset_right = 531.0
@@ -159,7 +161,7 @@ text = "Biome 1"
 label_settings = SubResource("LabelSettings_nibr4")
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="art_1" unique_id=1814974552]
+[node name="Label2" type="Label" parent="selec_1" unique_id=1814974552]
 offset_left = 158.0
 offset_top = 405.0
 offset_right = 543.0
@@ -168,7 +170,7 @@ text = "Difficulty: Easy"
 label_settings = SubResource("LabelSettings_npojr")
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="art_1" unique_id=1000249396]
+[node name="Button" type="Button" parent="selec_1" unique_id=1000249396]
 offset_left = 288.0
 offset_top = 455.0
 offset_right = 420.0
@@ -181,3 +183,8 @@ text = "Select"
 
 [node name="fade_transition" parent="." unique_id=1383053709 instance=ExtResource("6_npojr")]
 layout_mode = 0
+
+[node name="Timer" type="Timer" parent="fade_transition" unique_id=377271064]
+
+[connection signal="pressed" from="selec_1/Button" to="." method="_select_map_1"]
+[connection signal="timeout" from="fade_transition/Timer" to="." method="_end_transition"]
