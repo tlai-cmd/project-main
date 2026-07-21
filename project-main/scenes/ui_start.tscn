@@ -1,17 +1,162 @@
 [gd_scene format=3 uid="uid://bcd6tsb5n22x7"]
 
-[node name="Control" type="Control" unique_id=362457447]
+[ext_resource type="FontFile" uid="uid://b6wf2sqncsqn8" path="res://assets/font/PasseroOne-Regular.ttf" id="1_qcqpe"]
+[ext_resource type="Script" uid="uid://cfg8moxqmpv18" path="res://script/main_menu.gd" id="1_vsll3"]
+[ext_resource type="Texture2D" uid="uid://cvnmpn0i4m70k" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_3/game_background_3.png" id="2_6c4vy"]
+[ext_resource type="Texture2D" uid="uid://dy0h7emquw72p" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_4/game_background_4.png" id="3_2yi6i"]
+[ext_resource type="Texture2D" uid="uid://bkxvcnowc4ras" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_2/game_background_2.png" id="4_1s5om"]
+[ext_resource type="Texture2D" uid="uid://cu5fcgma7axia" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_1/game_background_1.png" id="5_4jg76"]
+[ext_resource type="Texture2D" uid="uid://2cv6m56a6xws" path="res://assets/Screenshot 2026-07-21 144255.png" id="6_2yi6i"]
+[ext_resource type="FontFile" uid="uid://bk55yx0ay6kul" path="res://assets/font/VampiroOne-Regular.ttf" id="7_6c4vy"]
+[ext_resource type="PackedScene" uid="uid://dfdsmisq61ul7" path="res://scenes/fade_transition.tscn" id="9_1s5om"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1s5om"]
+texture = ExtResource("6_2yi6i")
+modulate_color = Color(0.94415516, 1.1383855, 1.2951192, 0.61960787)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pagf6"]
+font = ExtResource("1_qcqpe")
+font_size = 117
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nv5h"]
+bg_color = Color(1, 1, 1, 0.72156864)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ala6"]
+bg_color = Color(0.15438208, 0.5853756, 0.42326713, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6c4vy"]
+bg_color = Color(6.256998e-07, 0.7069736, 0.48455143, 0.5294118)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s5om"]
+bg_color = Color(1, 1, 1, 0.72156864)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jg76"]
+bg_color = Color(1, 0.3474654, 0.28168064, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ruicp"]
+bg_color = Color(0.6356338, 0.21205021, 0.09396024, 0.6862745)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Control" type="Control" unique_id=362457447 node_paths=PackedStringArray("transition", "timer_transition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_vsll3")
+transition = NodePath("fade_transition")
+timer_transition = NodePath("fade_transition/time_transition")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1272998629]
+[node name="Node2D" type="Node2D" parent="." unique_id=774711694]
+visible = false
+
+[node name="GameBackground3" type="Sprite2D" parent="Node2D" unique_id=1748522359]
+position = Vector2(647, 303)
+scale = Vector2(0.67118055, 0.67118055)
+texture = ExtResource("2_6c4vy")
+
+[node name="GameBackground4" type="Sprite2D" parent="Node2D" unique_id=609066839]
+position = Vector2(891, 304)
+scale = Vector2(0.67314804, 0.6731481)
+texture = ExtResource("3_2yi6i")
+
+[node name="GameBackground2" type="Sprite2D" parent="Node2D" unique_id=2014730207]
+position = Vector2(1245.5555, 305.5)
+scale = Vector2(0.67870367, 0.6787037)
+texture = ExtResource("4_1s5om")
+
+[node name="GameBackground1" type="Sprite2D" parent="Node2D" unique_id=1285967243]
+position = Vector2(1480.1111, 303)
+scale = Vector2(0.67407405, 0.67407405)
+texture = ExtResource("5_4jg76")
+
+[node name="Panel" type="Panel" parent="." unique_id=477841480]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1s5om")
+
+[node name="Label" type="Label" parent="." unique_id=1510019612]
 layout_mode = 0
-offset_left = -19.0
-offset_top = -15.0
-offset_right = 1176.0
-offset_bottom = 677.0
-color = Color(0, 0, 0, 1)
+offset_left = 3.0
+offset_top = 82.0
+offset_right = 1155.0
+offset_bottom = 222.0
+text = "Realms of Defense"
+label_settings = SubResource("LabelSettings_pagf6")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=416377740]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -89.0
+offset_right = 192.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1682825013]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1.8049031e-06, 0.42239994, 3.85046e-07, 1)
+theme_override_fonts/font = ExtResource("7_6c4vy")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_0nv5h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1ala6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6c4vy")
+text = "Play"
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=700599415]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.8288603, 0.1451917, 0.1964406, 1)
+theme_override_fonts/font = ExtResource("7_6c4vy")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_1s5om")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4jg76")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ruicp")
+text = "Quit"
+
+[node name="fade_transition" parent="." unique_id=1383053709 instance=ExtResource("9_1s5om")]
+visible = false
+layout_mode = 0
+
+[node name="time_transition" type="Timer" parent="fade_transition" unique_id=1481115534]
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_play"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_quit"]
+[connection signal="timeout" from="fade_transition/time_transition" to="." method="_end_transition"]
