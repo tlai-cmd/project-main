@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://cspxdvwnehhm8" path="res://assets/font/Fredoka-Medium.ttf" id="3_sirkt"]
 [ext_resource type="FontFile" uid="uid://b6wf2sqncsqn8" path="res://assets/font/PasseroOne-Regular.ttf" id="4_8lljq"]
 [ext_resource type="PackedScene" uid="uid://dfdsmisq61ul7" path="res://scenes/fade_transition.tscn" id="6_npojr"]
+[ext_resource type="Texture2D" uid="uid://x6bfcraol1t3" path="res://assets/buttons/exit_to_app_30dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" id="7_npojr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jh0do"]
 texture = ExtResource("1_3y6n7")
@@ -60,6 +61,11 @@ texture = ExtResource("2_jh0do")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00ary"]
 bg_color = Color(0.6901961, 0.6862745, 0.7137255, 0.5294118)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -67,6 +73,12 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ckdbr"]
 bg_color = Color(0.43529412, 0.65882355, 0.5372549, 0.6901961)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -74,6 +86,45 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o58pi"]
 bg_color = Color(0, 0.653692, 0.4312922, 0.8901961)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.32873073, 0.67288375, 0.56274706, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o72eg"]
+bg_color = Color(0.6, 0.6, 0.6, 0.61960787)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wake2"]
+bg_color = Color(0.9647059, 0.36862746, 0.41960785, 0.61960787)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oocba"]
+bg_color = Color(1, 0.3372549, 0.3372549, 0.9137255)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -181,10 +232,24 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ckdbr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o58pi")
 text = "Select"
 
+[node name="out" type="Node2D" parent="." unique_id=187988036]
+
+[node name="Button" type="Button" parent="out" unique_id=1473041791]
+offset_left = 22.0
+offset_top = 21.0
+offset_right = 71.0
+offset_bottom = 71.44118
+theme_override_styles/normal = SubResource("StyleBoxFlat_o72eg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wake2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oocba")
+icon = ExtResource("7_npojr")
+icon_alignment = 1
+
 [node name="fade_transition" parent="." unique_id=1383053709 instance=ExtResource("6_npojr")]
 layout_mode = 0
 
 [node name="Timer" type="Timer" parent="fade_transition" unique_id=377271064]
 
 [connection signal="pressed" from="selec_1/Button" to="." method="_select_map_1"]
+[connection signal="pressed" from="out/Button" to="." method="_quit_clicked"]
 [connection signal="timeout" from="fade_transition/Timer" to="." method="_end_transition"]

@@ -15,7 +15,16 @@ func _select_map_1() -> void:
 	timer_transition.start()
 	$fade_transition/AnimationPlayer.play("fade_in")
 	
+func _quit_clicked() -> void:
+	button_type = "quit"
+	transition.show()
+	timer_transition.start()
+	$fade_transition/AnimationPlayer.play("fade_in")
+	
 
 func _end_transition() -> void:
 	if button_type == "map_1":
 		get_tree().change_scene_to_file("res://scenes/level.tscn")
+		
+	elif button_type == "quit":
+		get_tree().change_scene_to_file("res://scenes/ui_start.tscn")
