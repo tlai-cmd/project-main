@@ -6,7 +6,6 @@ extends Node2D
 @export var base_health_ui: ProgressBar
 
 
-
 var placing = false
 var money:int = 3
 var placing_amount:int = 0
