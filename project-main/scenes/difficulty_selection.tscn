@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dlcmyb8nh57xt"]
 
 [ext_resource type="Texture2D" uid="uid://2cv6m56a6xws" path="res://assets/Screenshot 2026-07-21 144255.png" id="1_3y6n7"]
-[ext_resource type="Script" uid="uid://cvrnsr27045ql" path="res://scenes/difficulty_selection.gd" id="1_nibr4"]
+[ext_resource type="Script" uid="uid://cvrnsr27045ql" path="res://script/difficulty_selection.gd" id="1_nibr4"]
 [ext_resource type="Texture2D" uid="uid://cvnmpn0i4m70k" path="res://assets/craftpix-net-305231-free-tower-defense-2d-vector-tileset/PNG/game_background_3/game_background_3.png" id="2_jh0do"]
 [ext_resource type="FontFile" uid="uid://cspxdvwnehhm8" path="res://assets/font/Fredoka-Medium.ttf" id="3_sirkt"]
 [ext_resource type="FontFile" uid="uid://b6wf2sqncsqn8" path="res://assets/font/PasseroOne-Regular.ttf" id="4_8lljq"]
