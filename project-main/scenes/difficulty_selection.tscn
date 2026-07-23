@@ -250,6 +250,8 @@ layout_mode = 0
 
 [node name="Timer" type="Timer" parent="fade_transition" unique_id=377271064]
 
+[node name="selec_3" type="CanvasLayer" parent="." unique_id=375040616]
+
 [connection signal="pressed" from="selec_1/Button" to="." method="_select_map_1"]
 [connection signal="pressed" from="out/Button" to="." method="_quit_clicked"]
 [connection signal="timeout" from="fade_transition/Timer" to="." method="_end_transition"]
