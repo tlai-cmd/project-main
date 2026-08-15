@@ -4,13 +4,16 @@ extends Node2D
 @export var notification: Label
 @export var base: Area2D
 @export var base_health_ui: ProgressBar
-
+@export var upgrade_ui: CanvasLayer
+@export var damage_text: Label
+@export var cooldown_text: Label
 
 var placing = false
 var money:int = 3
 var placing_amount:int = 0
 var base_health:int = 4
 var wave: int = 0
+var unit: CharacterBody2D
 
 
 
@@ -18,6 +21,8 @@ var wave: int = 0
 func _ready() -> void:
 	base_health_ui.max_value = base_health
 	base_health_ui.value = base_health
+	for i in get_tree().get_nodes_in_group("unit"):
+		unit = i
 
 func _pay_and_build() -> void:
 	placing = false
@@ -45,4 +50,24 @@ func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 		base_health_ui.value = base_health
 	if base_health == 0:
 		get_tree().call_deferred("reload_current_scene")
+		
+func upgrade_pop_up() -> void:
+	upgrade_ui.show()
+	
+	
+func _disable_ui() -> void:
+	upgrade_ui.hide()
+
+
+func _on_upgradingbutton_pressed() -> void:
+	if money < unit.cost:
+		print("unavailable")
+	else:
+		money -= unit.cost
+		unit.stats["level"] += 1
+		unit._upgrade_unit()
+		
+func _upgrade_text() -> void:
+	damage_text.text = str(unit.stats["damage"])
+	cooldown_text.text = str(unit.stats["cooldown"])
 		

@@ -1,12 +1,16 @@
 extends CharacterBody2D
 var health:int = 2
 var level: Node2D
+var unit: CharacterBody2D
 
 @export var health_ui: ProgressBar
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("level"):
 		level = node
+	for p in get_tree().get_nodes_in_group("unit"):
+		unit = p
+		print(unit)
 	health_ui.max_value = health
 	health_ui.value = health
 
@@ -15,9 +19,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func take_damage() -> void:
+func take_damage(damage: int) -> void:
 	if health > 0:
-		health -= 1
+		health -= damage
 		health_ui.value = health
 	else:
 		queue_free()

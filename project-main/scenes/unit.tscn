@@ -25,12 +25,13 @@ corner_radius_bottom_left = 888
 size = Vector2(61, 68)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1839986940 node_paths=PackedStringArray("bullet_spawn", "timer", "pivot", "marker") groups=["unit"]]
+input_pickable = true
 script = ExtResource("1_o7ajc")
 bullet_scene = ExtResource("2_k673f")
-bullet_spawn = NodePath("Node2D/Marker2D")
+bullet_spawn = NodePath("Marker2D")
 timer = NodePath("cooldown")
 pivot = NodePath("Node2D")
-marker = NodePath("Node2D/Marker2D")
+marker = NodePath("Marker2D")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2075252876]
 position = Vector2(0, -7)
@@ -43,9 +44,14 @@ offset_left = -131.0
 offset_top = -133.0
 offset_right = 131.0
 offset_bottom = 133.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o7ajc")
 
 [node name="cooldown" type="Timer" parent="." unique_id=1425831481]
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=735585276]
+position = Vector2(0, -7)
+rotation = -1.568428
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1418575577]
 
@@ -64,14 +70,13 @@ position = Vector2(-1.0000004, 2)
 scale = Vector2(0.37500003, 0.375)
 texture = ExtResource("5_e8hdl")
 
-[node name="Marker2D" type="Marker2D" parent="Node2D" unique_id=735585276]
-position = Vector2(0, -7)
-rotation = -1.568428
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300474670]
 position = Vector2(-1.5, -2)
 shape = SubResource("RectangleShape2D_lf63s")
 
+[connection signal="input_event" from="." to="." method="_click_upg_ui"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_not_hover"]
 [connection signal="body_entered" from="Area2D" to="." method="_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_body_exited"]
 [connection signal="timeout" from="cooldown" to="." method="_bullet_cooldown"]
