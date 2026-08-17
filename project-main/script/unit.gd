@@ -23,6 +23,10 @@ var cost: int = 0
 @export var pivot: Node2D
 @export var marker: Marker2D
 @export var upgrading_button: Button
+@export var upgrading_ui: CanvasLayer
+@export var damage_text: Label
+@export var cooldown_text: Label
+
 
 func _ready() -> void:
 	for i in get_tree().get_nodes_in_group("enemy"):
@@ -33,8 +37,13 @@ func _ready() -> void:
 		
 	
 func _process(delta: float) -> void:
-	#check if the placing is available, which allow the unit to track the player
+	
+	#updating cooldown and damage label + cooldown timer
 	timer.wait_time = stats["cooldown"]
+	damage_text.text = str(stats["damage"])
+	cooldown_text.text = str(stats["cooldown"])
+	
+	#check if the placing is available, which allow the unit to track the player
 	if placing == false:
 		if not closest_enemy == null:
 			marker.look_at(closest_enemy.global_position)
@@ -110,7 +119,7 @@ func _not_hover() -> void:
 
 func _click_upg_ui(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if Input.is_action_just_pressed("click") and upgrade == true:
-		get_parent().upgrade_pop_up()
+		upgrading_ui.show()
 		
 func max_level() -> void:
 	upgrading_button.disabled = true
@@ -119,3 +128,17 @@ func max_level() -> void:
 func _upgrade_unit() -> void:
 	stats["damage"] = int(stats["damage"] * 1.5)
 	stats["cooldown"] = snappedf(stats["cooldown"] * 0.85, 0.01)
+	
+func _exit() -> void:
+	upgrading_ui.hide()
+		
+
+func _upgrade() -> void:
+	if level.money < cost:
+		print("unavailable")
+	else:
+		level.money -= cost
+		print(cost)
+		stats["level"] += 1
+		_upgrade_unit()
+		print("upgraded")

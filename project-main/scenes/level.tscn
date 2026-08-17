@@ -20,11 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://cyc8ywi6fol2t" path="res://scenes/boss.tscn" id="18_8gofh"]
 [ext_resource type="Texture2D" uid="uid://dhj1eovxpnphx" path="res://assets/tower/Screenshot 2026-06-29 101007 - Copy.png" id="18_gunhw"]
 [ext_resource type="FontFile" uid="uid://cspxdvwnehhm8" path="res://assets/font/Fredoka-Medium.ttf" id="19_8gofh"]
-[ext_resource type="FontFile" uid="uid://cqk10uqo0ytdt" path="res://assets/font/stacksan font/StackSansNotch-Bold.ttf" id="21_h6wmr"]
-[ext_resource type="Texture2D" uid="uid://dcthntwtrt6yc" path="res://assets/tower/Screenshot 2026-06-29 101007.png" id="22_3ies3"]
-[ext_resource type="FontFile" uid="uid://bt5coqs8bx22n" path="res://assets/font/stacksan font/StackSansNotch-ExtraLight.ttf" id="23_xy2fk"]
-[ext_resource type="FontFile" uid="uid://clyto4kitccgw" path="res://assets/font/stacksan font/StackSansNotch-Light.ttf" id="24_cmcjb"]
-[ext_resource type="FontFile" uid="uid://dmb2bh3qe740i" path="res://assets/font/stacksan font/StackSansNotch-SemiBold.ttf" id="25_556r4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klq6b"]
 texture = ExtResource("7_klq6b")
@@ -188,100 +183,13 @@ bg_color = Color(0, 0.82825553, 0, 0.38431373)
 font = ExtResource("19_8gofh")
 font_size = 31
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqd0y"]
-bg_color = Color(0, 0, 0, 0.85490197)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5k0ak"]
-bg_color = Color(0, 0, 0, 0.39215687)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 1
-border_color = Color(0.37036443, 0.37036452, 0.37036428, 1)
-border_blend = true
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="LabelSettings" id="LabelSettings_wu01b"]
-font = ExtResource("21_h6wmr")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7agi7"]
-bg_color = Color(0.7529412, 0.7529412, 0.7529412, 0.105882354)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
-
-[sub_resource type="LabelSettings" id="LabelSettings_kih21"]
-font = ExtResource("23_xy2fk")
-font_color = Color(1, 0.42745098, 0.06666667, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_w3o6u"]
-font = ExtResource("24_cmcjb")
-font_color = Color(0.38431373, 0.4862745, 1, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_2e2fo"]
-font = ExtResource("24_cmcjb")
-font_color = Color(1, 1, 0.2784314, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gur6y"]
-bg_color = Color(0.2924439, 0.69187754, 0.46050406, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3why"]
-bg_color = Color(0.4429902, 0.6656203, 0.45450693, 0.54901963)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ies3"]
-bg_color = Color(0, 0.5866387, 0.28850925, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xy2fk"]
-bg_color = Color(1, 0.33713186, 0.3260814, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmcjb"]
-bg_color = Color(0.38007212, 0.10837946, 0.08735563, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_556r4"]
-bg_color = Color(1, 0.34117648, 0.29803923, 0.6156863)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[node name="Node2D" type="Node2D" unique_id=96619386 node_paths=PackedStringArray("money_label", "notification", "base", "base_health_ui", "upgrade_ui", "damage_text", "cooldown_text") groups=["level"]]
+[node name="Node2D" type="Node2D" unique_id=96619386 node_paths=PackedStringArray("money_label", "notification", "base", "base_health_ui") groups=["level"]]
 script = ExtResource("1_ppgk2")
 unit_scene = ExtResource("3_mx8sn")
 money_label = NodePath("CanvasLayer2/Label")
 notification = NodePath("notification/Label")
 base = NodePath("Area2D")
 base_health_ui = NodePath("ProgressBar")
-upgrade_ui = NodePath("upgrading_ui")
-damage_text = NodePath("upgrading_ui/Control/damage/Label")
-cooldown_text = NodePath("upgrading_ui/Control/cooldown/Label")
 
 [node name="spawner" type="Timer" parent="." unique_id=1426996698]
 wait_time = 2.0
@@ -426,125 +334,6 @@ offset_bottom = 88.0
 label_settings = SubResource("LabelSettings_gunhw")
 horizontal_alignment = 1
 
-[node name="upgrading_ui" type="CanvasLayer" parent="." unique_id=67282863]
-visible = false
-
-[node name="Control" type="Control" parent="upgrading_ui" unique_id=1381257241]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 788.0
-offset_top = 115.0
-offset_right = 1118.0
-offset_bottom = 360.0
-
-[node name="Panel" type="Panel" parent="upgrading_ui/Control" unique_id=39752478]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -34.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_pqd0y")
-
-[node name="Panel2" type="Panel" parent="upgrading_ui/Control" unique_id=712702014]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 14.0
-offset_right = 152.0
-offset_bottom = 155.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_5k0ak")
-
-[node name="Label" type="Label" parent="upgrading_ui/Control" unique_id=1074786054]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 16.0
-offset_right = 151.0
-offset_bottom = 39.0
-text = "Unit1"
-label_settings = SubResource("LabelSettings_wu01b")
-horizontal_alignment = 1
-
-[node name="Screenshot20260629101007" type="Sprite2D" parent="upgrading_ui/Control" unique_id=1571360110]
-position = Vector2(80.99999, 93.000015)
-scale = Vector2(0.29094076, 0.29094076)
-texture = ExtResource("22_3ies3")
-
-[node name="damage" type="Panel" parent="upgrading_ui/Control" unique_id=2064277524]
-layout_mode = 0
-offset_left = 165.0
-offset_top = 30.0
-offset_right = 317.0
-offset_bottom = 57.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_7agi7")
-
-[node name="Label" type="Label" parent="upgrading_ui/Control/damage" unique_id=1864171078]
-layout_mode = 0
-offset_right = 151.0
-offset_bottom = 28.0
-text = "2.0"
-label_settings = SubResource("LabelSettings_kih21")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="cooldown" type="Panel" parent="upgrading_ui/Control" unique_id=2123255146]
-layout_mode = 0
-offset_left = 165.0
-offset_top = 69.0
-offset_right = 317.0
-offset_bottom = 96.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_7agi7")
-
-[node name="Label" type="Label" parent="upgrading_ui/Control/cooldown" unique_id=645053888]
-layout_mode = 0
-offset_right = 152.0
-offset_bottom = 28.0
-text = "1.0"
-label_settings = SubResource("LabelSettings_w3o6u")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="range" type="Panel" parent="upgrading_ui/Control" unique_id=509004089]
-layout_mode = 0
-offset_left = 165.0
-offset_top = 109.0
-offset_right = 317.0
-offset_bottom = 136.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_7agi7")
-
-[node name="Label" type="Label" parent="upgrading_ui/Control/range" unique_id=27366292]
-layout_mode = 0
-offset_right = 152.0
-offset_bottom = 27.0
-text = "5.0"
-label_settings = SubResource("LabelSettings_2e2fo")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="upgrading-button" type="Button" parent="upgrading_ui/Control" unique_id=1294288307]
-layout_mode = 0
-offset_left = 167.0
-offset_top = 164.0
-offset_right = 318.0
-offset_bottom = 193.0
-theme_override_fonts/font = ExtResource("25_556r4")
-theme_override_styles/normal = SubResource("StyleBoxFlat_gur6y")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_v3why")
-theme_override_styles/hover = SubResource("StyleBoxFlat_3ies3")
-text = "Upgrade"
-
-[node name="exit" type="Button" parent="upgrading_ui" unique_id=546109256]
-offset_left = 779.0
-offset_top = 107.0
-offset_right = 811.0
-offset_bottom = 138.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_xy2fk")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_cmcjb")
-theme_override_styles/hover = SubResource("StyleBoxFlat_556r4")
-text = "X"
-
 [connection signal="timeout" from="spawner" to="Path2D" method="_on_spawner_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_unit_place_button"]
-[connection signal="pressed" from="upgrading_ui/Control/upgrading-button" to="." method="_on_upgradingbutton_pressed"]
-[connection signal="pressed" from="upgrading_ui/exit" to="." method="_disable_ui"]

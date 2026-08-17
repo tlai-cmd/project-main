@@ -5,6 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://dr2aufq8geimi" path="res://assets/tower/1.png" id="3_tb304"]
 [ext_resource type="Texture2D" uid="uid://dxonsgth6ovdk" path="res://assets/tower/3.png" id="4_ruro2"]
 [ext_resource type="Texture2D" uid="uid://jh1l0kvylk8t" path="res://assets/tower/2.png" id="5_e8hdl"]
+[ext_resource type="FontFile" uid="uid://cqk10uqo0ytdt" path="res://assets/font/stacksan font/StackSansNotch-Bold.ttf" id="6_dh01e"]
+[ext_resource type="Texture2D" uid="uid://dcthntwtrt6yc" path="res://assets/tower/Screenshot 2026-06-29 101007.png" id="7_b0dep"]
+[ext_resource type="FontFile" uid="uid://bt5coqs8bx22n" path="res://assets/font/stacksan font/StackSansNotch-ExtraLight.ttf" id="8_yxc7x"]
+[ext_resource type="FontFile" uid="uid://clyto4kitccgw" path="res://assets/font/stacksan font/StackSansNotch-Light.ttf" id="9_omkap"]
+[ext_resource type="FontFile" uid="uid://dmb2bh3qe740i" path="res://assets/font/stacksan font/StackSansNotch-SemiBold.ttf" id="10_gr2wx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7ajc"]
 radius = 128.0
@@ -24,7 +29,91 @@ corner_radius_bottom_left = 888
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lf63s"]
 size = Vector2(61, 68)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1839986940 node_paths=PackedStringArray("bullet_spawn", "timer", "pivot", "marker") groups=["unit"]]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pi0r"]
+bg_color = Color(0, 0, 0, 0.85490197)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofq0c"]
+bg_color = Color(0, 0, 0, 0.39215687)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0.37036443, 0.37036452, 0.37036428, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_4jta7"]
+font = ExtResource("6_dh01e")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhfok"]
+bg_color = Color(0.7529412, 0.7529412, 0.7529412, 0.105882354)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_8vpj5"]
+font = ExtResource("8_yxc7x")
+font_color = Color(1, 0.42745098, 0.06666667, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_urede"]
+font = ExtResource("9_omkap")
+font_color = Color(0.38431373, 0.4862745, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1eu01"]
+font = ExtResource("9_omkap")
+font_color = Color(1, 1, 0.2784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpdkk"]
+bg_color = Color(0.2924439, 0.69187754, 0.46050406, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s358u"]
+bg_color = Color(0.4429902, 0.6656203, 0.45450693, 0.54901963)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wskq"]
+bg_color = Color(0, 0.5866387, 0.28850925, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxq3q"]
+bg_color = Color(1, 0.33713186, 0.3260814, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hx7ds"]
+bg_color = Color(0.38007212, 0.10837946, 0.08735563, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcmtr"]
+bg_color = Color(1, 0.34117648, 0.29803923, 0.6156863)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1839986940 node_paths=PackedStringArray("bullet_spawn", "timer", "pivot", "marker", "upgrading_button", "upgrading_ui", "damage_text", "cooldown_text") groups=["unit"]]
 input_pickable = true
 script = ExtResource("1_o7ajc")
 bullet_scene = ExtResource("2_k673f")
@@ -32,6 +121,10 @@ bullet_spawn = NodePath("Marker2D")
 timer = NodePath("cooldown")
 pivot = NodePath("Node2D")
 marker = NodePath("Marker2D")
+upgrading_button = NodePath("upgrading_ui/Control/upgrading-button")
+upgrading_ui = NodePath("upgrading_ui")
+damage_text = NodePath("upgrading_ui/Control/damage/Label")
+cooldown_text = NodePath("upgrading_ui/Control/cooldown/Label")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2075252876]
 position = Vector2(0, -7)
@@ -74,9 +167,128 @@ texture = ExtResource("5_e8hdl")
 position = Vector2(-1.5, -2)
 shape = SubResource("RectangleShape2D_lf63s")
 
+[node name="upgrading_ui" type="CanvasLayer" parent="." unique_id=746264334]
+visible = false
+
+[node name="Control" type="Control" parent="upgrading_ui" unique_id=994570548]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 788.0
+offset_top = 115.0
+offset_right = 1118.0
+offset_bottom = 360.0
+
+[node name="Panel" type="Panel" parent="upgrading_ui/Control" unique_id=1520856388]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pi0r")
+
+[node name="Panel2" type="Panel" parent="upgrading_ui/Control" unique_id=124748411]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 14.0
+offset_right = 152.0
+offset_bottom = 155.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ofq0c")
+
+[node name="Label" type="Label" parent="upgrading_ui/Control" unique_id=2059711097]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 16.0
+offset_right = 151.0
+offset_bottom = 39.0
+text = "Unit1"
+label_settings = SubResource("LabelSettings_4jta7")
+horizontal_alignment = 1
+
+[node name="Screenshot20260629101007" type="Sprite2D" parent="upgrading_ui/Control" unique_id=493600299]
+position = Vector2(80.99999, 93.000015)
+scale = Vector2(0.29094076, 0.29094076)
+texture = ExtResource("7_b0dep")
+
+[node name="damage" type="Panel" parent="upgrading_ui/Control" unique_id=1378817718]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 30.0
+offset_right = 317.0
+offset_bottom = 57.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uhfok")
+
+[node name="Label" type="Label" parent="upgrading_ui/Control/damage" unique_id=1100182758]
+layout_mode = 0
+offset_right = 151.0
+offset_bottom = 28.0
+text = "2.0"
+label_settings = SubResource("LabelSettings_8vpj5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cooldown" type="Panel" parent="upgrading_ui/Control" unique_id=890232411]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 69.0
+offset_right = 317.0
+offset_bottom = 96.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uhfok")
+
+[node name="Label" type="Label" parent="upgrading_ui/Control/cooldown" unique_id=1538167413]
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 28.0
+text = "1.0"
+label_settings = SubResource("LabelSettings_urede")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="range" type="Panel" parent="upgrading_ui/Control" unique_id=1465024124]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 109.0
+offset_right = 317.0
+offset_bottom = 136.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uhfok")
+
+[node name="Label" type="Label" parent="upgrading_ui/Control/range" unique_id=1328212853]
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 27.0
+text = "5.0"
+label_settings = SubResource("LabelSettings_1eu01")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="upgrading-button" type="Button" parent="upgrading_ui/Control" unique_id=1689016066]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 164.0
+offset_right = 318.0
+offset_bottom = 193.0
+theme_override_fonts/font = ExtResource("10_gr2wx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dpdkk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s358u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0wskq")
+text = "Upgrade"
+
+[node name="exit" type="Button" parent="upgrading_ui" unique_id=1761561091]
+offset_left = 779.0
+offset_top = 107.0
+offset_right = 811.0
+offset_bottom = 138.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_wxq3q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hx7ds")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wcmtr")
+text = "X"
+
 [connection signal="input_event" from="." to="." method="_click_upg_ui"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_not_hover"]
 [connection signal="body_entered" from="Area2D" to="." method="_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_body_exited"]
 [connection signal="timeout" from="cooldown" to="." method="_bullet_cooldown"]
+[connection signal="pressed" from="upgrading_ui/Control/upgrading-button" to="." method="_upgrade"]
+[connection signal="pressed" from="upgrading_ui/exit" to="." method="_exit"]
