@@ -37,7 +37,12 @@ func _ready() -> void:
 		
 	
 func _process(delta: float) -> void:
-	
+	var current_level = stats["level"]
+	if current_level - 1 < upgrade_cost.size():
+		cost = upgrade_cost[current_level - 1]
+	else:
+		_max_level()
+		
 	#updating cooldown and damage label + cooldown timer
 	timer.wait_time = stats["cooldown"]
 	damage_text.text = str(stats["damage"])
@@ -73,7 +78,7 @@ func _process(delta: float) -> void:
 		if level - 1 < upgrade_cost.size():
 			cost = upgrade_cost[level - 1]
 		else:
-			max_level()
+			_max_level()
 					
 #adding bullet scene + allow the unit to show it					
 func _shoot() -> void:
@@ -121,7 +126,7 @@ func _click_upg_ui(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if Input.is_action_just_pressed("click") and upgrade == true:
 		upgrading_ui.show()
 		
-func max_level() -> void:
+func _max_level() -> void:
 	upgrading_button.disabled = true
 	upgrading_button.text = "MAX"
 	

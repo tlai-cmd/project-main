@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var health: int = 5
+var health: int = 70
 var level: Node2D
 
 @export var health_ui: ProgressBar
@@ -17,9 +17,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func take_damage() -> void:
+func take_damage(damage: int) -> void:
 	if health > 0:
-		health -= 1
+		health -= damage
 		health_ui.value = health
 	else:
 		queue_free()

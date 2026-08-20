@@ -1,7 +1,7 @@
 extends Path2D
 var wave_number:int = 0
 var enemy_quantity: int = 0
-var max_enemy_value: int = 1
+var max_enemy_value: int = 2
 var boss_spawned: bool = false
 var boss_count:int = 0
 
@@ -48,7 +48,7 @@ func _boss_spawn() -> void:
 func new_wave() -> void:
 	wave_number += 1
 	await get_tree().create_timer(20.0).timeout
-	max_enemy_value *= 1.1
+	max_enemy_value *= 1.5
 
 
 
