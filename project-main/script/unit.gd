@@ -16,6 +16,8 @@ var stats: Dictionary = {
 }
 var upgrade_cost: Array = [3.0, 5.0, 9.0]
 var cost: int = 0
+var damage_scale: int = 1.5
+var cooldown_scale: float = 0.85
 
 @export var bullet_scene: PackedScene
 @export var bullet_spawn: Marker2D
@@ -74,11 +76,6 @@ func _process(delta: float) -> void:
 				else:
 					get_parent()._pay_and_build()
 		
-		var level = stats["level"]
-		if level - 1 < upgrade_cost.size():
-			cost = upgrade_cost[level - 1]
-		else:
-			_max_level()
 					
 #adding bullet scene + allow the unit to show it					
 func _shoot() -> void:
@@ -131,8 +128,8 @@ func _max_level() -> void:
 	upgrading_button.text = "MAX"
 	
 func _upgrade_unit() -> void:
-	stats["damage"] = int(stats["damage"] * 1.5)
-	stats["cooldown"] = snappedf(stats["cooldown"] * 0.85, 0.01)
+	stats["damage"] = int(stats["damage"] * damage_scale)
+	stats["cooldown"] = snappedf(stats["cooldown"] * cooldown_scale, 0.01)
 	
 func _exit() -> void:
 	upgrading_ui.hide()

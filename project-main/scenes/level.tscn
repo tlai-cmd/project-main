@@ -178,6 +178,10 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 1, 1, 1)
 border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gunhw"]
@@ -312,10 +316,10 @@ label_settings = SubResource("LabelSettings_2r41h")
 horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=2042509847]
-offset_left = 342.0
+offset_left = 226.0
 offset_top = 8.0
-offset_right = 828.0
-offset_bottom = 41.0
+offset_right = 950.0
+offset_bottom = 33.0
 theme_override_styles/background = SubResource("StyleBoxFlat_2r41h")
 theme_override_styles/fill = SubResource("StyleBoxFlat_klq6b")
 max_value = 10.0

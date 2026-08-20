@@ -12,6 +12,8 @@ var placing_amount:int = 0
 var base_health:int = 4
 var wave: int = 0
 var unit: CharacterBody2D
+var boss_damage: int = 2 
+var enemy_damage: int = 1
 
 
 
@@ -41,10 +43,10 @@ func _unit_place_button() -> void:
 
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("enemy"):
-		base_health -= 1
+		base_health -= enemy_damage
 		base_health_ui.value = base_health
 	if body.is_in_group("boss"):
-		base_health -= 2
+		base_health -= boss_damage
 		base_health_ui.value = base_health
 	if base_health == 0:
 		get_tree().call_deferred("reload_current_scene")

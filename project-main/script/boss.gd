@@ -1,7 +1,7 @@
 extends CharacterBody2D
 var health: int = 70
 var level: Node2D
-
+var money_gained: int = 4
 @export var health_ui: ProgressBar
 
 # Called when the node enters the scene tree for the first time.
@@ -23,4 +23,4 @@ func take_damage(damage: int) -> void:
 		health_ui.value = health
 	else:
 		queue_free()
-		level.money += 4
+		level.money += money_gained
