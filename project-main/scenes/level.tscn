@@ -143,16 +143,17 @@ outline_size = 2
 outline_color = Color(0, 0.28235295, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gofh"]
-bg_color = Color(0, 0.39349866, 1.0064392, 0.654902)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
+bg_color = Color(0.6, 0.6, 0.6, 0.41960785)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_ppgk2"]
 font = ExtResource("19_8gofh")
-font_size = 32
-font_color = Color(0.4862745, 1, 0, 1)
+font_size = 25
+font_color = Color(0, 0.72156864, 0, 1)
+outline_color = Color(0.4862745, 0.4862745, 0.4862745, 0.43529412)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2r41h"]
 font_color = Color(0.78431374, 0, 0, 1)
@@ -184,12 +185,10 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gunhw"]
-bg_color = Color(0, 0.82825553, 0, 0.38431373)
-
 [sub_resource type="LabelSettings" id="LabelSettings_gunhw"]
 font = ExtResource("19_8gofh")
-font_size = 31
+font_size = 24
+font_color = Color(0, 0, 0, 1)
 
 [node name="Node2D" type="Node2D" unique_id=96619386 node_paths=PackedStringArray("money_label", "notification", "base", "base_health_ui") groups=["level"]]
 script = ExtResource("1_ppgk2")
@@ -289,29 +288,28 @@ horizontal_alignment = 1
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=845650599]
 
-[node name="Panel" type="Panel" parent="CanvasLayer2" unique_id=317241638]
-offset_left = 395.0
-offset_top = 49.0
-offset_right = 471.69458
-offset_bottom = 93.56522
-scale = Vector2(2.3600097, 0.83999974)
+[node name="Panel" type="Panel" parent="CanvasLayer2" unique_id=1159037391]
+offset_left = 505.0
+offset_top = 518.0
+offset_right = 632.0
+offset_bottom = 558.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8gofh")
 
 [node name="Label" type="Label" parent="CanvasLayer2" unique_id=1478148952]
-offset_left = 394.0
-offset_top = 48.0
-offset_right = 575.0
-offset_bottom = 88.0
+offset_left = 505.0
+offset_top = 522.0
+offset_right = 632.0
+offset_bottom = 553.0
 label_settings = SubResource("LabelSettings_ppgk2")
 horizontal_alignment = 1
 
 [node name="notification" type="CanvasLayer" parent="." unique_id=170478134]
 
 [node name="Label" type="Label" parent="notification" unique_id=1679954575]
-offset_left = 451.0
-offset_top = 600.0
-offset_right = 775.0
-offset_bottom = 629.0
+offset_left = 728.0
+offset_top = 34.0
+offset_right = 947.0
+offset_bottom = 63.0
 label_settings = SubResource("LabelSettings_2r41h")
 horizontal_alignment = 1
 
@@ -327,18 +325,12 @@ step = 1.0
 
 [node name="waveui" type="CanvasLayer" parent="." unique_id=1639740370]
 
-[node name="Panel" type="Panel" parent="waveui" unique_id=653557864]
-offset_left = 586.0
-offset_top = 49.0
-offset_right = 767.0
-offset_bottom = 86.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_gunhw")
-
 [node name="wave" type="Label" parent="waveui" unique_id=879237642]
-offset_left = 586.0
-offset_top = 48.0
-offset_right = 768.0
-offset_bottom = 88.0
+offset_left = 217.0
+offset_top = 34.0
+offset_right = 321.0
+offset_bottom = 74.0
+text = "wave"
 label_settings = SubResource("LabelSettings_gunhw")
 horizontal_alignment = 1
 

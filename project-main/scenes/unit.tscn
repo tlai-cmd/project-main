@@ -168,15 +168,14 @@ position = Vector2(-1.5, -2)
 shape = SubResource("RectangleShape2D_lf63s")
 
 [node name="upgrading_ui" type="CanvasLayer" parent="." unique_id=746264334]
-visible = false
 
 [node name="Control" type="Control" parent="upgrading_ui" unique_id=994570548]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 788.0
-offset_top = 115.0
+offset_top = 198.0
 offset_right = 1118.0
-offset_bottom = 360.0
+offset_bottom = 443.0
 
 [node name="Panel" type="Panel" parent="upgrading_ui/Control" unique_id=1520856388]
 layout_mode = 1
@@ -274,11 +273,12 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_s358u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0wskq")
 text = "Upgrade"
 
-[node name="exit" type="Button" parent="upgrading_ui" unique_id=1761561091]
-offset_left = 779.0
-offset_top = 107.0
-offset_right = 811.0
-offset_bottom = 138.0
+[node name="exit" type="Button" parent="upgrading_ui/Control" unique_id=1761561091]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -8.0
+offset_right = 23.0
+offset_bottom = 23.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_wxq3q")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_hx7ds")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wcmtr")
@@ -291,4 +291,4 @@ text = "X"
 [connection signal="body_exited" from="Area2D" to="." method="_body_exited"]
 [connection signal="timeout" from="cooldown" to="." method="_bullet_cooldown"]
 [connection signal="pressed" from="upgrading_ui/Control/upgrading-button" to="." method="_upgrade"]
-[connection signal="pressed" from="upgrading_ui/exit" to="." method="_exit"]
+[connection signal="pressed" from="upgrading_ui/Control/exit" to="." method="_exit"]
