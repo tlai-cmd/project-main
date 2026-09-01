@@ -12,7 +12,7 @@ var max_placement: int = 2
 var stats: Dictionary = {
 	"damage": 2,
 	"cooldown": 1,
-	"level": 1
+	"level": 8
 }
 var upgrade_cost: Array = [3.0, 5.0, 9.0]
 var cost: int = 0
@@ -39,16 +39,20 @@ func _ready() -> void:
 		
 	
 func _process(delta: float) -> void:
+	#Levels code:
 	var current_level = stats["level"]
+	# Accessing the array to get the cost of each upgrade
 	if current_level - 1 < upgrade_cost.size():
 		cost = upgrade_cost[current_level - 1]
 	else:
 		_max_level()
+#-------------------------------
 		
-	#updating cooldown and damage label + cooldown timer
+	#updating cooldown and damage label + cooldown timer, which link with the current dmg&cd
 	timer.wait_time = stats["cooldown"]
 	damage_text.text = str(stats["damage"])
 	cooldown_text.text = str(stats["cooldown"])
+#-------------------------------
 	
 	#check if the placing is available, which allow the unit to track the player
 	if placing == false:
@@ -59,7 +63,7 @@ func _process(delta: float) -> void:
 	else:
 		global_position = get_global_mouse_position()
 		if Input.is_action_just_pressed("click"):
-			#notifications
+			#notifications (either valid or not if the unit being placed or not
 			if not level.money >= cash_placement:
 				placing = true
 				get_parent().get_node("notification/Label").text = "Not Enough Money"
@@ -75,9 +79,12 @@ func _process(delta: float) -> void:
 					queue_free()
 				else:
 					get_parent()._pay_and_build()
+				#-----------------------------
+				
+	#-----------------------------------------------------------
 		
 					
-#adding bullet scene + allow the unit to show it					
+#adding bullet scene + allow the unit to show it				
 func _shoot() -> void:
 	var bullet = bullet_scene.instantiate()
 	bullet.rotation = bullet_spawn.global_rotation
@@ -86,19 +93,22 @@ func _shoot() -> void:
 	add_sibling(bullet)
 	shoot_switch = false
 	timer.start()
+#--------------------------------
 
-#track the enemies	
+#track the enemies function-------------------------
 func _body_entered(body: Node2D) -> void:
+	#the code will detect the closest_enemy and add it into the array 
 	if body.is_in_group("enemy") or body.is_in_group("boss"):
 		closest_enemy = body
+		#if the placing_ui detect the users did place a unit -> it will start to follow the unit that move into the area2D
 		if placing == false:
 			enemies.append(body)
 		for node in enemies:
 			if node.get_parent().progress_ratio > closest_enemy.get_parent().progress_ratio:
 				closest_enemy = node
-		
+#---------------------------------------		
 
-
+#erase/ delete the enemy that left the range
 func _body_exited(body: Node2D) -> void:
 	if body.is_in_group("enemy") or body.is_in_group("boss"):
 		if placing == false:
@@ -106,11 +116,15 @@ func _body_exited(body: Node2D) -> void:
 		if body == closest_enemy:
 			closest_enemy = null
 		print(enemies)
+#---------------------------------
 
-
+#the switch will activate if the cooldown ends
 func _bullet_cooldown() -> void:
 	shoot_switch = true
-	
+#---------------------------------------
+
+
+#hovering & accessing the upgrading ui	
 func _on_mouse_entered() -> void:
 	scale = Vector2(1.1, 1.1)
 	upgrade = true
@@ -126,15 +140,19 @@ func _click_upg_ui(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 func _max_level() -> void:
 	upgrading_button.disabled = true
 	upgrading_button.text = "MAX"
-	
-func _upgrade_unit() -> void:
+
+func _exit() -> void:
+	upgrading_ui.hide()
+
+#------------------------------------------------
+
+#upgrading function and changing units' stats based on each levels
+func _upgrade_stats() -> void:
 	stats["damage"] = int(stats["damage"] * damage_scale)
 	stats["cooldown"] = snappedf(stats["cooldown"] * cooldown_scale, 0.01)
 	
-func _exit() -> void:
-	upgrading_ui.hide()
-		
 
+	
 func _upgrade() -> void:
 	if level.money < cost:
 		print("unavailable")
@@ -142,5 +160,6 @@ func _upgrade() -> void:
 		level.money -= cost
 		print(cost)
 		stats["level"] += 1
-		_upgrade_unit()
+		_upgrade_stats()
 		print("upgraded")
+#----------------------------------------------------

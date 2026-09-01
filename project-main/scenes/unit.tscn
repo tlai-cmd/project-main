@@ -20,7 +20,7 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.23094213, 0.30937964, 1.085, 0.498)
+border_color = Color(0, 0.43529412, 0.7294118, 0.5568628)
 corner_radius_top_left = 888
 corner_radius_top_right = 888
 corner_radius_bottom_right = 888
@@ -30,7 +30,7 @@ corner_radius_bottom_left = 888
 size = Vector2(61, 68)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pi0r"]
-bg_color = Color(0, 0, 0, 0.85490197)
+bg_color = Color(0, 0, 0, 0.5647059)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8

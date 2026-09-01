@@ -108,12 +108,12 @@ point_count = 13
 size = Vector2(74.5, 103)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8frs"]
-bg_color = Color(0.28816873, 0.6423247, 0.94334346, 1)
+bg_color = Color(0.44104633, 0.59485424, 1, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0.09172989, 0.4447183, 0.708186, 1)
+border_color = Color(0.00024450422, 0.33650494, 0.9979053, 1)
 border_blend = true
 corner_detail = 1
 
@@ -330,7 +330,7 @@ offset_left = 217.0
 offset_top = 34.0
 offset_right = 321.0
 offset_bottom = 74.0
-text = "wave"
+text = "wave num"
 label_settings = SubResource("LabelSettings_gunhw")
 horizontal_alignment = 1
 

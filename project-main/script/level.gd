@@ -7,7 +7,7 @@ extends Node2D
 
 
 var placing = false
-var money:int = 3
+var money:int = 20
 var placing_amount:int = 0
 var base_health:int = 4
 var wave: int = 0
