@@ -23,7 +23,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	wave_ui.text = "Wave:" + str(wave_number)
 		
-	
+# (1) spawning enemy function:
 func _on_spawner_timeout() -> void:
 	if wave_number % 10 != 0:
 		if enemy_quantity < max_enemy_value:
@@ -46,13 +46,14 @@ func _boss_spawn() -> void:
 			boss_spawned = false
 			boss_count -= max_boss
 			new_wave()
+#--------------------------------------------------
 
-		
+# (2) proceed a wave after spawning sufficient amount of enemies:		
 func new_wave() -> void:
 	wave_number += 1
 	await get_tree().create_timer(20.0).timeout
 	max_enemy_value *= enemy_scale
-
+#------------------------------------------------------
 
 
 	

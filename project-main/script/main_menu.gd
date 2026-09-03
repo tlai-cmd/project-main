@@ -13,17 +13,21 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+#fading effect:
 func _play() -> void:
 	button_type = "start"
 	transition.show()
 	timer_transition.start()
 	$fade_transition/AnimationPlayer.play("fade_in")
+#----------------------------------------------------
 
-
+#quit button:
 func _quit() -> void:
 	get_tree().quit()
+#-------------------------------
 
-
+#start button:
 func _end_transition() -> void:
 	if button_type == "start":
 		get_tree().change_scene_to_file("res://scenes/difficulty_selection.tscn")
+#--------------------------------------------------------------------------------------

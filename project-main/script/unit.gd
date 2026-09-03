@@ -12,7 +12,7 @@ var max_placement: int = 2
 var stats: Dictionary = {
 	"damage": 2,
 	"cooldown": 1,
-	"level": 8
+	"level": 1
 }
 var upgrade_cost: Array = [3.0, 5.0, 9.0]
 var cost: int = 0

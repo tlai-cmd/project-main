@@ -14,20 +14,25 @@ var wave: int = 0
 var unit: CharacterBody2D
 var boss_damage: int = 2 
 var enemy_damage: int = 1
-
+var init_price: int = 2
+var init_p_amount: int = 1
+var init_b_health: int = 0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#updating the base health bar:
 	base_health_ui.max_value = base_health
 	base_health_ui.value = base_health
+	#--------------------------------
 	for i in get_tree().get_nodes_in_group("unit"):
 		unit = i
 
+#the game will decrease the income if player place the unit down
 func _pay_and_build() -> void:
 	placing = false
-	money -= 2
-	placing_amount += 1
+	money -= init_price
+	placing_amount += init_p_amount
 
 
 
@@ -48,7 +53,7 @@ func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("boss"):
 		base_health -= boss_damage
 		base_health_ui.value = base_health
-	if base_health == 0:
+	if base_health == init_b_health:
 		get_tree().call_deferred("reload_current_scene")
 		
 
