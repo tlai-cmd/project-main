@@ -17,6 +17,7 @@ var enemy_damage: int = 1
 var init_price: int = 2
 var init_p_amount: int = 1
 var init_b_health: int = 0
+var scale_value: float = 1.5
 
 
 # Called when the node enters the scene tree for the first time.
@@ -55,6 +56,12 @@ func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 		base_health_ui.value = base_health
 	if base_health == init_b_health:
 		get_tree().call_deferred("reload_current_scene")
+		
+func scale(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		body.scale_enemy(scale_value)
+	elif body.is_in_group("boss"):
+		body.scale_boss(scale_value)
 		
 
 		

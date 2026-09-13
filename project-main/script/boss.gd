@@ -24,3 +24,6 @@ func take_damage(damage: int) -> void:
 	else:
 		queue_free()
 		level.money += money_gained
+
+func scale_boss(scale_value: float) -> void:
+	health *= scale_value

@@ -3,6 +3,7 @@ var health:int = 2
 var level: Node2D
 var unit: CharacterBody2D
 var money_gained: int = 1
+var scale_value:float = 1.5
 
 @export var health_ui: ProgressBar
 # Called when the node enters the scene tree for the first time.
@@ -27,4 +28,7 @@ func take_damage(damage: int) -> void:
 	else:
 		queue_free()
 		level.money += money_gained
+		
+func scale_enemy(scale_value: float) -> void:
+	health *= scale_value
 		

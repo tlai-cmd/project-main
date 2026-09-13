@@ -7,9 +7,13 @@ var boss_count:int = 0
 var max_boss: int = 1
 var enemy_scale: int = 1.5
 var init_enemy_value: int = 0
+var boss: CharacterBody2D
+var enemy: CharacterBody2D
+var scale_value: float = 1.5
+
 
 @export var timer: Timer
-@export var enemy: PackedScene
+@export var enemy_value: PackedScene
 @export var tower_zone: Area2D
 @export var wave_ui: Label
 @export var boss_scene: PackedScene
@@ -18,6 +22,10 @@ var init_enemy_value: int = 0
 func _ready() -> void:
 	await get_tree().create_timer(1.0).timeout
 	new_wave()
+	for b in get_tree().get_nodes_in_group("boss"):
+		b = boss
+	for e in get_tree().get_nodes_in_group("boss"):
+		e = enemy
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -27,7 +35,7 @@ func _process(delta: float) -> void:
 func _on_spawner_timeout() -> void:
 	if wave_number % 10 != 0:
 		if enemy_quantity < max_enemy_value:
-			var enemy_scene = enemy.instantiate()
+			var enemy_scene = enemy_value.instantiate()
 			add_child(enemy_scene)
 			enemy_quantity += 1
 		else:
@@ -53,6 +61,7 @@ func new_wave() -> void:
 	wave_number += 1
 	await get_tree().create_timer(20.0).timeout
 	max_enemy_value *= enemy_scale
+	get_parent().scale()
 #------------------------------------------------------
 
 
