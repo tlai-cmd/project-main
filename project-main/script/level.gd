@@ -64,4 +64,14 @@ func scale(body: Node2D) -> void:
 		body.scale_boss(scale_value)
 		
 
-		
+func _pause() -> void:
+	get_tree().paused = true
+	$pause_menu/Control.visible = true
+
+func _play() -> void:
+	get_tree().paused = false
+	$pause_menu/Control.visible = false
+
+
+func _main_menu() -> void:
+	get_tree().change_scene_to_file("res://scenes/ui_start.tscn")

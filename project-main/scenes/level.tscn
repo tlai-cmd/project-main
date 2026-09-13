@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cyc8ywi6fol2t" path="res://scenes/boss.tscn" id="18_8gofh"]
 [ext_resource type="Texture2D" uid="uid://dhj1eovxpnphx" path="res://assets/tower/Screenshot 2026-06-29 101007 - Copy.png" id="18_gunhw"]
 [ext_resource type="FontFile" uid="uid://cspxdvwnehhm8" path="res://assets/font/Fredoka-Medium.ttf" id="19_8gofh"]
+[ext_resource type="Texture2D" uid="uid://dydu8xmu4dv6y" path="res://assets/pause_29dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" id="21_h6wmr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klq6b"]
 texture = ExtResource("7_klq6b")
@@ -334,6 +335,53 @@ text = "wave num"
 label_settings = SubResource("LabelSettings_gunhw")
 horizontal_alignment = 1
 
+[node name="pause_button" type="CanvasLayer" parent="." unique_id=457930348]
+
+[node name="Button" type="Button" parent="pause_button" unique_id=713249085]
+anchors_preset = -1
+anchor_right = 0.017
+offset_right = 19.415998
+offset_bottom = 40.0
+icon = ExtResource("21_h6wmr")
+icon_alignment = 1
+
+[node name="pause_menu" type="CanvasLayer" parent="." unique_id=359668141]
+
+[node name="Control" type="Control" parent="pause_menu" unique_id=743357733]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="pause_menu/Control" unique_id=775310759]
+layout_mode = 0
+offset_left = -14.0
+offset_top = -10.0
+offset_right = 1166.0
+offset_bottom = 657.0
+color = Color(0, 0, 0, 0.53333336)
+
+[node name="Button" type="Button" parent="pause_menu/Control" unique_id=1565619791]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 334.0
+offset_right = 730.0
+offset_bottom = 379.0
+text = "Back to Main Menu"
+
+[node name="Button2" type="Button" parent="pause_menu/Control" unique_id=1946851145]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 270.0
+offset_right = 729.0
+offset_bottom = 317.0
+text = "Return to Game"
+
 [connection signal="timeout" from="spawner" to="Path2D" method="_on_spawner_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_unit_place_button"]
+[connection signal="pressed" from="pause_button/Button" to="." method="_pause"]
+[connection signal="pressed" from="pause_menu/Control/Button" to="." method="_main_menu"]
+[connection signal="pressed" from="pause_menu/Control/Button2" to="." method="_play"]
