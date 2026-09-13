@@ -27,3 +27,4 @@ func take_damage(damage: int) -> void:
 
 func scale_boss(scale_value: float) -> void:
 	health *= scale_value
+	health_ui.value = health
