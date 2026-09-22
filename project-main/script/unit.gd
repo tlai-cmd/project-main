@@ -16,7 +16,7 @@ var stats: Dictionary = {
 }
 var upgrade_cost: Array = [3.0, 5.0, 9.0]
 var cost: int = 0
-var damage_scale: int = 1.5
+var damage_scale: float = 1.5
 var cooldown_scale: float = 0.85
 
 @export var bullet_scene: PackedScene
@@ -39,6 +39,9 @@ func _ready() -> void:
 		
 	
 func _process(delta: float) -> void:
+	#upgrade price updated:
+	upgrading_button.text = "Upgrade: " + "$" + str(cost)
+	
 	#Levels code:
 	var current_level = stats["level"]
 	# Accessing the array to get the cost of each upgrade
@@ -148,7 +151,7 @@ func _exit() -> void:
 
 #upgrading function and changing units' stats based on each levels
 func _upgrade_stats() -> void:
-	stats["damage"] = int(stats["damage"] * damage_scale)
+	stats["damage"] = float(stats["damage"] * damage_scale)
 	stats["cooldown"] = snappedf(stats["cooldown"] * cooldown_scale, 0.01)
 	
 

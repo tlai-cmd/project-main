@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var health:int = 2
+var health:float = 4
 var level: Node2D
 var unit: CharacterBody2D
 var money_gained: int = 1
@@ -19,9 +19,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	health_ui.value = health
 	
-func take_damage(damage: int) -> void:
+
+func take_damage(damage: float) -> void:
 	if health > 0:
 		health -= damage
 		health_ui.value = health
@@ -29,8 +30,4 @@ func take_damage(damage: int) -> void:
 		queue_free()
 		level.money += money_gained
 		
-func scale_enemy(scale_value: float) -> void:
-	health *= scale_value
-	health_ui.value = health
-	print(health)
 		

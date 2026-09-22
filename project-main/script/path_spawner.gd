@@ -9,8 +9,8 @@ var enemy_scale: int = 1.5
 var init_enemy_value: int = 0
 var boss: CharacterBody2D
 var enemy: CharacterBody2D
-var scale_value: float = 10
-var wave_changer: bool = false
+var scale_value: float = 1.1
+var wave_changed: bool = false
 var body: Node2D
 
 @export var timer: Timer
@@ -35,42 +35,40 @@ func _process(delta: float) -> void:
 # (1) spawning enemy function:
 func _on_spawner_timeout() -> void:
 	if wave_number % 10 != 0:
-		wave_changer = true
+		wave_changed = true
 		if enemy_quantity < max_enemy_value:
 			var enemy_scene = enemy_value.instantiate()
+			if wave_changed:
+				enemy_scene.enemy.health *= scale_value
 			add_child(enemy_scene)
 			enemy_quantity += 1
-			scale(enemy_scene)
 		else:
+			wave_changed = false
 			new_wave()
 			enemy_quantity = init_enemy_value
 	else:
 		boss_spawned = true
+		wave_changed
 		_boss_spawn()
 
 func _boss_spawn() -> void:
 	if boss_spawned:
 		var boss = boss_scene.instantiate()
+		if wave_changed:
+			boss.boss_character.health *= scale_value
 		add_child(boss)
 		boss_count += max_boss
 		if boss_count <= max_boss:
 			boss_spawned = false
 			boss_count -= max_boss
-			scale(boss)
+			wave_changed = false
 			new_wave()
 #--------------------------------------------------
 
 # (2) proceed a wave after spawning sufficient amount of enemies:		
 func new_wave() -> void:
-	wave_changer = true
+	wave_changed = true
 	wave_number += 1
 	await get_tree().create_timer(20.0).timeout
 	max_enemy_value *= enemy_scale
 #------------------------------------------------------
-
-func scale(body: Node2D) -> void:
-	if wave_changer == true:
-		if body.is_in_group("enemy"):
-			body.scale_enemy(scale_value)
-		elif body.is_in_group("boss"):
-			body.scale_boss(scale_value)
