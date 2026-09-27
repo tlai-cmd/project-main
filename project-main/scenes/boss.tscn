@@ -12,9 +12,10 @@ bg_color = Color(0.6901961, 0.6, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jncid"]
 bg_color = Color(0.4117647, 0.5764706, 1, 1)
 
-[node name="PathFollow2D" type="PathFollow2D" unique_id=2045046033]
+[node name="PathFollow2D" type="PathFollow2D" unique_id=2045046033 node_paths=PackedStringArray("boss_character")]
 loop = false
 script = ExtResource("1_neq0i")
+boss_character = NodePath("boss")
 
 [node name="boss" type="CharacterBody2D" parent="." unique_id=1454883620 node_paths=PackedStringArray("health_ui") groups=["boss"]]
 script = ExtResource("1_dlmty")
