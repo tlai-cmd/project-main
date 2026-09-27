@@ -12,6 +12,7 @@ var enemy: CharacterBody2D
 var scale_value: float = 1.1
 var wave_changed: bool = false
 var body: Node2D
+var money_gained: int = 1.0
 
 @export var timer: Timer
 @export var enemy_value: PackedScene
@@ -71,4 +72,5 @@ func new_wave() -> void:
 	wave_number += 1
 	await get_tree().create_timer(20.0).timeout
 	max_enemy_value *= enemy_scale
+	get_parent().money += money_gained
 #------------------------------------------------------
